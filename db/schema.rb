@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_04_075126) do
+ActiveRecord::Schema.define(version: 2021_02_04_085036) do
 
   create_table "clips", force: :cascade do |t|
     t.integer "post_ramen_id", null: false
@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2021_02_04_075126) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "post_ramen", force: :cascade do |t|
+  create_table "post_ramens", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "image_id", null: false
     t.string "title", null: false
     t.text "content", null: false
-    t.float "review", null: false
-    t.string "image_id", null: false
-    t.integer "user_id", null: false
     t.integer "shop_id"
+    t.float "review", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
