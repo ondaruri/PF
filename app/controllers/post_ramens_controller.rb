@@ -1,5 +1,5 @@
 class PostRamensController < ApplicationController
-  
+
   def new
     @post_ramen = PostRamen.new
   end
@@ -21,8 +21,18 @@ class PostRamensController < ApplicationController
   end
 
   def destroy
+    @post_ramen = PostRamen.find(params[:id])
+    @post_ramen.destroy
+    redirect_to users_my_page_path
   end
 
   def search
   end
+
+  private
+
+  def post_ramen_params
+    params.require(:post_ramen).permit(:title, :content, :review, :image, :user_id)
+  end
+
 end
