@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   root to: 'homes#top'
 
   resources :shops, only: [:index, :show]
+  resources :clips, only:[:index, :create, :destroy]
 
   resources :post_ramens, only: [:show, :edit, :new, :update, :destroy, :create] do
     resources :post_comments, only: [:new, :create, :show, :edit, :update, :destroy]
     resources :likes, only: [:create, :destroy]
-    resources :clips, only:[:index, :create, :destroy]
   end
 
   resources :users, only: [:show, :edit, :update] do
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
   get 'users/my_page'
   get 'post_ramens/search'
-  get 'homes/top'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

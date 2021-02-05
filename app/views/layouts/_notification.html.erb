@@ -1,0 +1,15 @@
+<div class="Notification">
+ <% flash.each do |key, value| %>
+ <%= content_tag :div, value, class: key %>
+ <% end %>
+</div>
+
+<!--オリジナル入れたい時は以下のように、noticeをコントローラーに追記する-->
+<!--def create-->
+<!-- user = User.find(params[:id])-->
+<!--  if user.save-->
+<!--    redirect_to root_path, notice: "ユーザーを作成しました"-->
+<!--  else-->
+<!--    render :new-->
+<!-- end-->
+<!--end-->
