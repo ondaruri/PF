@@ -8,7 +8,24 @@
   <%= f.text_field :title %>
   <h4>投稿文</h4>
   <%= f.text_area :content %>
+  <%= f.fields_for :post_ramen do |t| %>
+  <div id="star">
+        <h4>評価</h4>
+        <%= t.hidden_field :review, id: :review_star %>
+      </div>
 
   <%= f.submit '投稿' %>
 <% end %>
+<% end %>
 </div>
+
+<script type="text/javascript">
+  $('#star').raty({
+    size : 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'post_ramen[review]', //登録するモデル名とカラム名を記述
+    half: true,
+  });
+</script>
