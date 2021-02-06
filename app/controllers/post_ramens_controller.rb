@@ -1,14 +1,14 @@
 class PostRamensController < ApplicationController
-  
+
   def new
-    @post_ramen = PostRamen.new
+    @shop = Shop.new
+    @shop.build_post_ramen
   end
 
   def create
     @post_ramen = PostRamen.new(post_ramen_params)
     @post_ramen.user_id = current_user.id
     @post_ramen.save
-    redirect_to post_ramen(ramen)
   end
 
   def show
@@ -24,5 +24,11 @@ class PostRamensController < ApplicationController
   end
 
   def search
+  end
+
+  private
+
+  def post_ramen_params
+    params.require(:post_ramen).permit(:title, :content, :review, :image, :user_id)
   end
 end
