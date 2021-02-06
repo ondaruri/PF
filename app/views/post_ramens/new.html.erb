@@ -1,15 +1,15 @@
-<h1>ラーメン新規投稿画面</h1>
+<h1>新規投稿画面</h1>
 
 <div class="form">
   <!--↓↓店舗情報入力↓↓-->
   <%= form_with model: @shop, local:true do |f| %>
     <h4>店名</h4>
-    <%= f.text_field :title %>
+    <%= f.text_field :name %>
      <h4>住所</h4>
     <%= f.text_field :address %>
 
   <!--↓↓ラーメン投稿情報入力↓↓-->
-    <%= f.fields_for :post_ramen do |t| %>
+    <!--<= f.fields_for :post_ramen do |t| %>-->
       <h4>画像</h4>
       <%= t.attachment_field :image %>
       <h4>タイトル</h4>
@@ -25,12 +25,12 @@
   <% end %>
 </div>
 
-<script>
+<script type="text/javascript">
   $('#star').raty({
     size : 36,
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: "<%= asset_path('star-half.png') %>",
+    starOn: "<= asset_path('star-on.png') %>",
+    starOff: "<= asset_path('star-off.png') %>",
+    starHalf: "<= asset_path('star-half.png') %>",
     scoreName: 'post_ramen[review]', //登録するモデル名とカラム名を記述
     half: true,
   });

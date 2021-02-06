@@ -9,7 +9,7 @@ class PostRamensController < ApplicationController
     @post_ramen = PostRamen.new(post_ramen_params)
     @post_ramen.user_id = current_user.id
     @post_ramen.save
-    redirect_to post_ramen(ramen)
+    redirect_to post_ramen_path
   end
 
   def show
