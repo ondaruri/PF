@@ -1,2 +1,12 @@
 <h1>PostRamens#show</h1>
-<p>Find me in app/views/post_ramens/show.html.erb</p>
+
+<div class="post-ramen">
+  <%= attachment_image_tag @post_ramen, :image %>
+  <!--<p>ショップ名：<= @post_image.shop_name %></p>-->
+  <!--<p>説明：<= @post_image.caption %></p>-->
+  <!--<p>ユーザーネーム：<= @post_image.user.name %></p>-->
+  <!--<p>投稿日時：<= @post_image.created_at.strftime('%Y/%m/%d') %></p>-->
+  <% if @post_ramen.user == current_user %>
+    <%= link_to "削除", post_ramen_path(@post_ramen), method: :delete %>
+  <% end %>
+  </div>

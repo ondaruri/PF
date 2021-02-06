@@ -1,2 +1,37 @@
-<h1>PostRamens#new</h1>
-<p>Find me in app/views/post_ramens/new.html.erb</p>
+<h1>ラーメン新規投稿画面</h1>
+
+<div class="form">
+  <!--↓↓店舗情報入力↓↓-->
+  <%= form_with model: @shop, local:true do |f| %>
+    <h4>店名</h4>
+    <%= f.text_field :title %>
+     <h4>住所</h4>
+    <%= f.text_field :address %>
+
+  <!--↓↓ラーメン投稿情報入力↓↓-->
+    <%= f.fields_for :post_ramens do |t| %>
+      <h4>画像</h4>
+      <!--<= t.attachment_field :image %>-->
+      <h4>タイトル</h4>
+      <%= t.text_field :title %>
+      <h4>投稿文</h4>
+      <%= t.text_area :content %>
+      <div id="star">
+        <h4>評価</h4>
+        <%= t.hidden_field :review, id: :review_star %>
+      </div>
+  <%= f.submit '投稿' %>
+   <% end %>
+  <% end %>
+</div>
+
+<script>
+  $('#star').raty({
+    size : 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'post_ramen[review]', //登録するモデル名とカラム名を記述
+    half: true,
+  });
+</script>
