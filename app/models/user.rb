@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :post_ramens, dependent: :destroy
   has_many :clips, dependent: :destroy
   has_many :likes, dependent: :destroy
+  attachment :image
 end
