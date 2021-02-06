@@ -9,10 +9,10 @@ class ShopsController < ApplicationController
 
     # @shop = Shop.new(shop_params)
     # @post_ramen = PostRamen.new(post_ramen_params)
-    @shop = Shop.new(shop_params)
-    p @shop.build_post_ramen
-    p shop_params
-    @shop.save!
+    # @shop = Shop.new(shop_params)
+    # p @shop.build_post_ramen
+    # p shop_params
+    # @shop.save!
     # @post_ramen.save
     # @post_ramen = PostRamen(post_ramen_params)
 

@@ -1,17 +1,22 @@
 class PostRamensController < ApplicationController
 
   def new
-    @shop = Shop.new
-    # @post_ramen = PostRamen.new
-    @shop.build_post_ramen
+    @post_ramen = PostRamen.new
   end
 
   def create
+    @post_ramen = PostRamen.new(post_ramen_params)
+    @post_ramen.user_id = current_user.id
+    if
+      @post_ramen.save!
+      redirect_to post_ramen_path(@post_ramen)
+    else
+      redirect_to root_path
+    end
   end
 
   def show
-    @post_ramens = PostRamen.all
-    @shops = Shops.all
+    @post_ramen = PostRamen.find(params[:id])
   end
 
   def edit

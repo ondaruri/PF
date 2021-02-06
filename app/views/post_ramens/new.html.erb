@@ -1,32 +1,23 @@
 <h1>新規投稿画面</h1>
 
 <div class="form">
-  <%= form_with model: @shop, local:true do |f| %>
+  <%= form_with model: @post_ramen, local:true do |f| %>
 
-  <h4>店名</h4>
-  <%= f.text_field :name %>
-  <h4>住所</h4>
-  <%= f.text_field :address %>
+  <h4>画像</h4>
+    <%= f.attachment_field :image %>
+  <h4>タイトル</h4>
+    <%= f.text_field :title %>
+  <h4>投稿文</h4>
+    <%= f.text_area :content %>
+  <!--評価-->
+  <div id="star">
+    <h4>評価</h4>
+    <%= f.hidden_field :review, id: :review_star %>
+  </div>
+    <%= f.hidden_field :user_id, id: current_user.id, value: current_user.id %>
 
-
-  <%= f.fields_for :post_ramen do |t| %>
-    <h4>画像</h4>
-    <%= t.attachment_field :image %>
-    <h4>タイトル</h4>
-    <%= t.text_field :title %>
-    <h4>投稿文</h4>
-    <%= t.text_area :content %>
-
-    <div id="star">
-      <h4>評価</h4>
-      <%= t.hidden_field :review, id: :review_star %>
-    </div>
-      <%= t.hidden_field :user_id, id: current_user.id, value: current_user.id %>
-
-
-  <%= f.submit '投稿' %>
-<% end %>
-<% end %>
+    <%= f.submit '新規投稿' %>
+  <% end %>
 </div>
 
 <script type="text/javascript">
