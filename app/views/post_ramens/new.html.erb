@@ -12,6 +12,8 @@
   <%= f.fields_for :post_ramen do |t| %>
     <h4>画像</h4>
     <%= t.attachment_field :image %>
+    <h4>タイトル</h4>
+    <%= t.text_field :title %>
     <h4>投稿文</h4>
     <%= t.text_area :content %>
 
@@ -19,6 +21,8 @@
       <h4>評価</h4>
       <%= t.hidden_field :review, id: :review_star %>
     </div>
+      <%= t.hidden_field :user_id, id: current_user.id, value: current_user.id %>
+
 
   <%= f.submit '投稿' %>
 <% end %>

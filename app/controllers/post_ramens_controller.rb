@@ -2,16 +2,16 @@ class PostRamensController < ApplicationController
 
   def new
     @shop = Shop.new
+    # @post_ramen = PostRamen.new
     @shop.build_post_ramen
   end
 
   def create
-    @post_ramen = PostRamen.new(post_ramen_params)
-    @post_ramen.user_id = current_user.id
-    @post_ramen.save
   end
 
   def show
+    @post_ramens = PostRamen.all
+    @shops = Shops.all
   end
 
   def edit

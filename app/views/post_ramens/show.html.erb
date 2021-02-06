@@ -1,2 +1,6 @@
-<h1>PostRamens#show</h1>
-<p>Find me in app/views/post_ramens/show.html.erb</p>
+<% @post_ramens.each do |post_ramen| %>
+  <%= attachment_image_tag post_ramen, :image, class:"card-img-top" %>
+  <p><%= post_ramen.name %></p>
+  <p><%= post_ramen.content %></p>
+  <% end %>
+aaaaaaaaa

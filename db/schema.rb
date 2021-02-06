@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_05_134055) do
+ActiveRecord::Schema.define(version: 2021_02_06_113947) do
 
   create_table "clips", force: :cascade do |t|
     t.integer "post_ramen_id", null: false
@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 2021_02_05_134055) do
   end
 
   create_table "post_ramens", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.string "image_id", null: false
-    t.string "title", null: false
-    t.text "content", null: false
+    t.integer "user_id"
+    t.string "image_id"
+    t.string "title"
+    t.text "content"
     t.integer "shop_id"
-    t.float "review", null: false
+    t.float "review"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
