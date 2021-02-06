@@ -1,2 +1,18 @@
-<h1>PostRamens#show</h1>
-<p>Find me in app/views/post_ramens/show.html.erb</p>
+  <%= attachment_image_tag @post_ramen, :image, fallback: "no_image.jpg", size: "400x300" %>
+  <p>タイトル</p>
+  <p><%= @post_ramen.title %></p>
+  <p>本文</p>
+  <p><%= @post_ramen.content %></p>
+  評価：<%= @post_ramen.review %>点
+<div id="star-rate-<%= @post_ramen.id %>"></div>
+          <script>
+          $('#star-rate-<%= @post_ramen.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @post_ramen.review %>,
+          });
+          </script>
