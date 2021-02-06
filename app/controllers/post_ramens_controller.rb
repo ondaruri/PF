@@ -2,6 +2,7 @@ class PostRamensController < ApplicationController
 
   def new
     @post_ramen = PostRamen.new
+    @shop = Shop.new
   end
 
   def create

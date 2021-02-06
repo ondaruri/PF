@@ -9,9 +9,9 @@
     <%= f.text_field :address %>
 
   <!--↓↓ラーメン投稿情報入力↓↓-->
-    <%= f.fields_for :post_ramens do |t| %>
+    <%= f.fields_for :post_ramen do |t| %>
       <h4>画像</h4>
-      <!--<= t.attachment_field :image %>-->
+      <%= t.attachment_field :image %>
       <h4>タイトル</h4>
       <%= t.text_field :title %>
       <h4>投稿文</h4>
