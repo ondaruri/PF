@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   post 'follow/:id' => 'relationships#follow', as: 'follow' #フォローする
   post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow' #フォロー外す
 
-  get 'users/my_page'
+  # get 'users/:current_user.id' => 'users#mypage', as: 'my_page'
   get 'post_ramens/search'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
