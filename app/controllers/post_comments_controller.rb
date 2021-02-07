@@ -21,6 +21,8 @@ class PostCommentsController < ApplicationController
   end
 
   def destroy
+    PostComment.find_by(id: params[:id], post_ramen_id: params[:post_ramen_id]).destroy
+    redirect_to post_ramen_path(params[:post_ramen_id])
   end
 
   private
