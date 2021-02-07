@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :clips, only:[:index, :create, :destroy]
 
   resources :post_ramens, only: [:show, :edit, :new, :update, :destroy, :create] do
-    resources :post_comments, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :post_comments, only: [:create, :show, :update, :destroy]
     resources :likes, only: [:create, :destroy]
   end
 
