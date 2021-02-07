@@ -1,0 +1,8 @@
+<%= @user.name %>さんのページだよ<br>
+私は<%= @current_user.name %><br>
+<%= render 'relationships/follow_button', user: @user %>
+<p>フォロー</p>
+<%= @user.following_user.count %>人
+<p>フォロワー</p>
+<%= @user.follower_user.count %>人
+
