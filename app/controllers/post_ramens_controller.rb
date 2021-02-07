@@ -17,6 +17,7 @@ class PostRamensController < ApplicationController
 
   def show
     @post_ramen = PostRamen.find(params[:id])
+    @post_comment = PostComment.new
   end
 
   def edit

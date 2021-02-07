@@ -4,15 +4,24 @@
   <p>本文</p>
   <p><%= @post_ramen.content %></p>
   評価：<%= @post_ramen.review %>点
-<div id="star-rate-<%= @post_ramen.id %>"></div>
-          <script>
-          $('#star-rate-<%= @post_ramen.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= @post_ramen.review %>,
-          });
-          </script>
+  <div id="star-rate-<%= @post_ramen.id %>"></div>
+    <script>
+    $('#star-rate-<%= @post_ramen.id %>').raty({
+      size: 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= @post_ramen.review %>,
+    });
+    </script>
+    <p>コメント件数：<%= @post_ramen.post_comments.count %></p>
+    <% @post_ramen.post_comments.each do |post_comment| %>
+      <%= post_comment.user.name %>
+      <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.content %>
+    <% end %>
+    <%= form_with(model:[@post_ramen, @post_comment], local: true) do |f| %>
+      <%= f.text_area :content, rows:'5',placeholder: "コメントをここに" %>
+      <%= f.submit "コメントする" %>
+    <% end %>
