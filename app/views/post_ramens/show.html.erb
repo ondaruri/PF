@@ -1,4 +1,7 @@
   <%= attachment_image_tag @post_ramen, :image, fallback: "no_image.jpg", size: "400x300" %>
+  <% if @post_ramen.user == current_user %>
+   <%= link_to "削除", post_ramen_path(@post_ramen), method: :delete %>
+  <% end %>
   <p>タイトル</p>
   <p><%= @post_ramen.title %></p>
   <p>本文</p>

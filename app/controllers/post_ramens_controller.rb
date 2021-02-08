@@ -27,6 +27,9 @@ class PostRamensController < ApplicationController
   end
 
   def destroy
+    user = current_user
+    PostRamen.find(params[:id]).destroy
+    redirect_to user_path(user)
   end
 
   def search
