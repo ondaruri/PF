@@ -1,9 +1,26 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.attachment {
+.icon-user .attachment  {
   border-radius: 50%;
 }
-.flex-item {
+.ramen-item .attachment {
     flex-flow: row wrap;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
 }
+// .post_ramen {
+//     width: 150px;
+//     height: 150px;
+//     object-fit: cover;
+// }
+// .ramen-list {
+//   display: flex;
+//   justify-content: space-between;
+//   flex-wrap: wrap
+// }
+// .ramen-item {
+//   width: 23%;
+//   height: 23%;
+// }
