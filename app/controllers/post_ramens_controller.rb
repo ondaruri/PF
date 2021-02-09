@@ -18,6 +18,7 @@ class PostRamensController < ApplicationController
   def show
     @post_ramen = PostRamen.find(params[:id])
     @post_comment = PostComment.new
+    gon.address = @post_ramen
   end
 
   def edit
@@ -38,6 +39,7 @@ class PostRamensController < ApplicationController
   private
 
   def post_ramen_params
-    params.require(:post_ramen).permit(:title, :content, :review, :image, :user_id)
+    params.require(:post_ramen).permit(:title, :content, :review,
+                                :shop_name, :address, :image, :user_id)
   end
 end

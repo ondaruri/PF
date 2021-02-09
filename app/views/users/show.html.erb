@@ -6,8 +6,8 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-2">
-      <div class="icon-user">
-          <%= attachment_image_tag @user, :image, fallback: "no_image.jpg", size: "100x100" %>
+      <div class="col-lg-2 icon-user">
+          <%= attachment_image_tag  @user, :image, fallback: "no_image.jpg", size: "100x100" %>
       </div>
     </div>
     <div class="col-lg-10">
@@ -45,10 +45,11 @@
     </div>
   </div>
   <div class="row">
-    <div class="flex-item">
+    <div class="ramen-item">
     <% @user.post_ramens.each do |post_ramen| %>
       <%= link_to post_ramen_path(post_ramen) do %>
-      <%= attachment_image_tag(post_ramen, :image, :fill, 250, 250, fallback: "no-image-icon.jpg") %>
+      <%= attachment_image_tag(post_ramen, :image, fallback: "no-image-icon.jpg") %>
+      <!--<= attachment_image_tag(post_ramen, :image, fallback: "no-image-icon.jpg") %>-->
       <% end %>
     <% end %>
     </div>
