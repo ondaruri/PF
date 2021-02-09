@@ -2,6 +2,7 @@ class PostRamensController < ApplicationController
 
   def new
     @post_ramen = PostRamen.new
+    @tags = ActsAsTaggableOn::Tag.all
   end
 
   def create
@@ -19,6 +20,10 @@ class PostRamensController < ApplicationController
     @post_ramen = PostRamen.find(params[:id])
     @post_comment = PostComment.new
     gon.address = @post_ramen
+    # @tags = @post_ramen.tag_counts_on(:tags)
+    # if params[:tag]
+    #   @post_ramens = PostRamen.tagged_with(params[:tag])
+    # end
   end
 
   def edit
@@ -40,6 +45,6 @@ class PostRamensController < ApplicationController
 
   def post_ramen_params
     params.require(:post_ramen).permit(:title, :content, :review,
-                                :shop_name, :address, :image, :user_id)
+            :shop_name, :address, :image, :user_id, tag_list:[] )
   end
 end
