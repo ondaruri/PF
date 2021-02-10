@@ -8,7 +8,7 @@
   <p><%= @post_ramen.content %></p>
   <div class="col-xs-12">
    <% @tags.each do |tag| %>
-    <%= link_to tag.name, class: "label label-default" %>
+    <%= link_to "#"+tag.name, post_ramens_path(tag.name), class: "badge badge-pill badge-primary" %>
     <!--<= raw(@post_ramen.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>-->
 
    <% end %>

@@ -1,0 +1,6 @@
+<% if user_signed_in? %>
+    <div><%= link_to '  ', root_path, class: 'fas fa-home text-left' %></div>
+    <div><%= link_to '  ホーム', root_path, class: 'fas fa-home  text-left' %></div>
+    <div><%= link_to '  マイページ', user_path(current_user), class: 'fas fa-user text-left' %></div>
+    <div><%= link_to '  投稿する', new_post_ramen_path, class: 'fas fa-edit text-left' %></div>
+<% end %>

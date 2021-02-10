@@ -1,0 +1,5 @@
+<%= search_form_for q do |f| %>
+  キーワード検索<%= f.search_field :title_or_content_or_shop_name_cont %><br>
+  評価<%= f.number_field :review_gteq %>以上〜
+  <%= f.submit "検索" %>
+<% end %>

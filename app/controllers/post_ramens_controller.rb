@@ -1,5 +1,14 @@
 class PostRamensController < ApplicationController
 
+  def index
+    # byebug
+    if params[:format]
+      @post_ramens = PostRamen.tagged_with(params[:format])
+    elsif @search = PostRamen.ransack(params[:q])
+      @post_ramens = @search.result
+    end
+  end
+
   def new
     @post_ramen = PostRamen.new
     @tags = ActsAsTaggableOn::Tag.all
@@ -20,7 +29,7 @@ class PostRamensController < ApplicationController
     @post_ramen = PostRamen.find(params[:id])
     @post_comment = PostComment.new
     gon.address = @post_ramen
-    # @tags = @post_ramen.tag_counts_on(:tags)
+    @tags = @post_ramen.tag_counts_on(:tags)
     # if params[:tag]
     #   @post_ramens = PostRamen.tagged_with(params[:tag])
     # end
@@ -45,6 +54,6 @@ class PostRamensController < ApplicationController
 
   def post_ramen_params
     params.require(:post_ramen).permit(:title, :content, :review,
-            :shop_name, :address, :image, :user_id, tag_list:[] )
+            :shop_name, :address, :image, :user_id, :tag, tag_list:[] )
   end
 end
