@@ -20,10 +20,18 @@
     <%= f.hidden_field :review, id: :review_star %>
   </div>
     <%= f.hidden_field :user_id, id: current_user.id, value: current_user.id %>
-
+    <label class="col-sm-12">タグ</label>
+      <div class="col-sm-12">
+        <% @tags.each do |tag| %>
+          <%= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>
+          <%= f.label " #{tag.name}", class: "label label-default" %>
+        <% end %>
+      </div>
     <%= f.submit '新規投稿' %>
   <% end %>
 </div>
+
+
 
 <script type="text/javascript">
   $('#star').raty({

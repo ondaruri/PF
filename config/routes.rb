@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :shops, only: [:index, :show, :create]
   resources :clips, only:[:index, :create, :destroy]
 
-  resources :post_ramens, only: [:show, :edit, :new, :update, :destroy, :create] do
+  resources :post_ramens, only: [:index,:show, :edit, :new, :update, :destroy, :create] do
     resources :post_comments, only: [:create, :show, :update, :destroy]
     resources :likes, only: [:create, :destroy]
   end

@@ -1,0 +1,9 @@
+<%= search_form_for q do |f| %>
+  キーワード検索<%= f.search_field :title_or_content_or_shop_name_cont %><br>
+  評価<%= f.number_field :review_gteq %>以上〜<br>
+  <% tags.each do |tag| %>
+    <!--<= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>-->
+    <%= f.label " #{tag.name})", class: "label label-default" %>
+  <% end %>
+  <%= f.submit "検索" %>
+<% end %>
