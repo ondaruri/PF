@@ -1,9 +1,18 @@
 <%= search_form_for q do |f| %>
   キーワード検索<%= f.search_field :title_or_content_or_shop_name_cont %><br>
   評価<%= f.number_field :review_gteq %>以上〜<br>
+  <%= f.submit "検索" %>
+<% end %>
+
+<%= search_form_for q do |f| %>
   <% tags.each do |tag| %>
+    <!--<= link_to "#"+tag.name, post_ramens_path(tag.name), class: "badge badge-pill badge-primary" %>-->
+    <!--<= f.check_box :tag_name, { multiple: true }, "#{tag.name}", nil %>-->
+    <!--<= raw(@post_ramen.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>-->
+    <!--<= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>-->
     <!--<= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>-->
     <%= f.label " #{tag.name})", class: "label label-default" %>
-  <% end %>
+    <% end %>
   <%= f.submit "検索" %>
+
 <% end %>

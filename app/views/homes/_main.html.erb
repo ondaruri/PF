@@ -1,0 +1,43 @@
+<div class="card" style="width: 100%;">
+  <% post_ramens.each do |post_ramen| %>
+  <div class="card-header">
+    <div class="row">
+      <div class="card-title col-8">Title:  <%= post_ramen.title %></div>
+      <div class="card-review col-4">
+        <div id="star-rate-<%= post_ramen.id %>">
+          <script>
+          $('#star-rate-<%= post_ramen.id %>').raty({
+            size: 20,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= post_ramen.review %>,
+          });
+        </script>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= link_to post_ramen_path(post_ramen.id) do %>
+  <div class="card-body" >
+      <div class="row">
+        <div class="card-img col-5">
+        <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "150x150" %>
+        </div>
+        <div class="card-content col-7">
+          <%= post_ramen.content %>
+        </div>
+      </div>
+  </div>
+  <% end %>
+  <div class="card-footer text-muted">
+    <div class="row">
+      <div class="col-4">コメント</div>
+      <div class="col-4">いいね</div>
+      <div class="col-4">お気に入り</div>
+    </div>
+  </div>
+  <% end %>
+</div>
