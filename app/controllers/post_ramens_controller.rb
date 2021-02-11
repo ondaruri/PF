@@ -2,10 +2,22 @@ class PostRamensController < ApplicationController
 
   def index
     # byebug
-    if params[:format]
+    if params[:format] #タグクリック時の検索
       @post_ramens = PostRamen.tagged_with(params[:format])
-    elsif @search = PostRamen.ransack(params[:q])
+    elsif params[:q].present? #フリーワード検索
+      @search = PostRamen.ransack(params[:q])
       @post_ramens = @search.result
+    elsif params[:acts_as_taggable_on_tag]{[:name][:search_method]}.present?
+      if  params[:acts_as_taggable_on_tag][:search_method] == "AND"
+        @post_ramens = PostRamen.tagged_with(params[:acts_as_taggable_on_tag][:name], :match_all => true) #and検索
+      elsif  params[:acts_as_taggable_on_tag][:search_method] == "OR"
+         @post_ramens = PostRamen.tagged_with(params[:acts_as_taggable_on_tag][:name], :any => true) #or検索
+      end
+    # elsif params[:acts_as_taggable_on_tag][:name].present? #タグチェックBOX検索時
+    #   # if  @post_ramens = PostRamen.tagged_with(params[:acts_as_taggable_on_tag][:name], :match_all => true) #and検索
+    #   @post_ramens = PostRamen.tagged_with(params[:acts_as_taggable_on_tag][:name], :any => true) #or検索
+    else
+      @post_ramens = PostRamen.all
     end
   end
 
@@ -54,6 +66,6 @@ class PostRamensController < ApplicationController
 
   def post_ramen_params
     params.require(:post_ramen).permit(:title, :content, :review,
-            :shop_name, :address, :image, :user_id, :tag, tag_list:[] )
+            :shop_name, :address, :image, :user_id, :search_method, :tag, tag_list:[] )
   end
 end

@@ -1,6 +1,6 @@
 class PostRamen < ApplicationRecord
   has_many :post_comments, dependent: :destroy
-  belongs_to :user, optional: true
+  belongs_to :user
   attachment :image
   validates :image, presence: true
 
