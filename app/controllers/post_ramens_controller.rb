@@ -42,6 +42,7 @@ class PostRamensController < ApplicationController
     @post_comment = PostComment.new
     gon.address = @post_ramen
     @tags = @post_ramen.tag_counts_on(:tags)
+    @post_comments = PostComment.where(post_ramen_id: params[:id])
     # if params[:tag]
     #   @post_ramens = PostRamen.tagged_with(params[:tag])
     # end
