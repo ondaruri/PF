@@ -2,7 +2,7 @@
   <% if @post_ramen.user == current_user %>
    <%= link_to "削除", post_ramen_path(@post_ramen), method: :delete %>
   <% end %>
-  <p>タイトル</p>
+  <p>タイトルaaaaaaa</p>
   <p><%= @post_ramen.title %></p>
   <p>本文</p>
   <p><%= @post_ramen.content %></p>
@@ -10,7 +10,6 @@
    <% @tags.each do |tag| %>
     <%= link_to "#"+tag.name, post_ramens_path(tag.name), class: "badge badge-pill badge-primary" %>
     <!--<= raw(@post_ramen.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>-->
-
    <% end %>
   </div>
   評価：<%= @post_ramen.review %>点
@@ -30,26 +29,14 @@
     <% @post_ramen.post_comments.each do |post_comment| %>
       <%= post_comment.user.name %>
       <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.content %>
-      <% if post_comment.user == current_user %>
   <div class="comment-delete">
+    <% if post_comment.user == current_user %>
     <%= link_to "削除", post_ramen_post_comment_path(post_comment.post_ramen, post_comment), method: :delete %>
-  </div>
-      <% end %>
-      <% if @post_ramen.liked_by?(current_user) %>
-    <p>
-      <%= link_to post_ramen_like_path(@post_ramen), method: :delete do %>
-        ♥<%= @post_ramen.likes.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_ramen_likes_path(@post_ramen), method: :post do %>
-        ♡<%= @post_ramen.likes.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
-
     <% end %>
+    <% end %>
+  </div>
+    <%= render 'likes/like_button', post_ramen: @post_ramen %>
+
     <%= form_with(model:[@post_ramen, @post_comment], local: true) do |f| %>
       <%= f.text_area :content, rows:'5',placeholder: "コメントをここに" %>
       <%= f.submit "コメントする" %>
