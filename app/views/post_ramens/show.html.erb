@@ -1,55 +1,95 @@
-  <%= attachment_image_tag @post_ramen, :image, fallback: "no_image.jpg", size: "400x300" %>
-  <% if @post_ramen.user == current_user %>
-   <%= link_to "削除", post_ramen_path(@post_ramen), method: :delete %>
-  <% end %>
-  <p>タイトル</p>
-  <p><%= @post_ramen.title %></p>
-  <p>本文</p>
-  <p><%= @post_ramen.content %></p>
-  <div class="col-xs-12">
-   <% @tags.each do |tag| %>
-    <%= link_to "#"+tag.name, post_ramens_path(tag.name), class: "badge badge-pill badge-primary" %>
-    <!--<= raw(@post_ramen.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')) %>-->
-
-   <% end %>
+<div class="container">
+  <div class="card" style="width: 100%;">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-5">
+           <%= attachment_image_tag @post_ramen, :image, fallback: "no_image.jpg", size: "400x300" %>
+        </div>
+        <div class="col-7">
+          <div class="row">
+            <div class="col-4">
+              <%= attachment_image_tag @post_ramen.user, :image, fallback: "no_image.jpg", size: "50x50" %>
+            </div>
+            <div class="col-4">
+              投稿者：　<%= @post_ramen.user.name %>
+            </div>
+            <div class="col-4">
+              フォロー
+            </div>
+          </div>
+          <div class="row">
+            タイトル　<%= @post_ramen.title %>
+          </div>
+          <div class="row">
+            <%= @post_ramen.content %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col"><%= render 'likes/like_button', post_ramen: @post_ramen %>
+        </div>
+        <div class="col">コメント<%= @post_ramen.post_comments.count %>　件</div>
+        <div class="col">okini</div>
+        <div class="col-3">
+          <div id="star-rate-<%= @post_ramen.id %>">
+            <script>
+              $('#star-rate-<%= @post_ramen.id %>').raty({
+                size: 20,
+                starOff:  '<%= asset_path('star-off.png') %>',
+                starOn : '<%= asset_path('star-on.png') %>',
+                starHalf: '<%= asset_path('star-half.png') %>',
+                half: true,
+                readOnly: true,
+                score: <%= @post_ramen.review %>,
+              });
+            </script>
+          </div>
+        </div>
+        <div class="col">
+          <% if @post_ramen.user == current_user %>
+            <%= link_to "削除", post_ramen_path(@post_ramen), method: :delete %>
+          <% else %>
+            <%= link_to '  ', root_path, class: 'fas fa-home text-left' %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row">
+        <% @tags.each do |tag| %>
+          <%= link_to "#"+tag.name, post_ramens_path(tag.name), class: "badge badge-pill badge-primary" %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  評価：<%= @post_ramen.review %>点
-  <div id="star-rate-<%= @post_ramen.id %>"></div>
-    <script>
-    $('#star-rate-<%= @post_ramen.id %>').raty({
-      size: 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      half: true,
-      readOnly: true,
-      score: <%= @post_ramen.review %>,
-    });
-    </script>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div id="map"></div>
+    </div>
+    <div class="col">
+      <div class="row">
+        <%= render 'post_comments/index', post_comments: @post_comments %>
+      </div>
+      <div class="row"></div>
+    </div>
+  </div>
+</div>
+
+
+
     <p>コメント件数：<%= @post_ramen.post_comments.count %></p>
     <% @post_ramen.post_comments.each do |post_comment| %>
       <%= post_comment.user.name %>
       <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.content %>
-      <% if post_comment.user == current_user %>
   <div class="comment-delete">
+    <% if post_comment.user == current_user %>
     <%= link_to "削除", post_ramen_post_comment_path(post_comment.post_ramen, post_comment), method: :delete %>
-  </div>
-      <% end %>
-      <% if @post_ramen.liked_by?(current_user) %>
-    <p>
-      <%= link_to post_ramen_like_path(@post_ramen), method: :delete do %>
-        ♥<%= @post_ramen.likes.count %> いいね
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to post_ramen_likes_path(@post_ramen), method: :post do %>
-        ♡<%= @post_ramen.likes.count %> いいね
-      <% end %>
-    </p>
-  <% end %>
-
     <% end %>
+    <% end %>
+  </div>
+    <%= render 'likes/like_button', post_ramen: @post_ramen %>
+
     <%= form_with(model:[@post_ramen, @post_comment], local: true) do |f| %>
       <%= f.text_area :content, rows:'5',placeholder: "コメントをここに" %>
       <%= f.submit "コメントする" %>

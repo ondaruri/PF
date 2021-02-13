@@ -35,7 +35,9 @@
   <div class="card-footer text-muted">
     <div class="row">
       <div class="col-4">コメント</div>
-      <div class="col-4">いいね</div>
+      <div class="col-4" id="like-<%= post_ramen.id %>">
+        <%= render 'likes/like_button', post_ramen: post_ramen %>
+      </div>
       <div class="col-4">お気に入り</div>
     </div>
   </div>
