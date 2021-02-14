@@ -41,11 +41,10 @@ class PostRamensController < ApplicationController
     @post_ramen = PostRamen.find(params[:id])
     @post_comment = PostComment.new
     gon.address = @post_ramen
-    @tags = @post_ramen.tag_counts_on(:tags)
+    @post_ramen_tags = @post_ramen.tag_counts_on(:tags)
     @post_comments = PostComment.where(post_ramen_id: params[:id])
-    # if params[:tag]
-    #   @post_ramens = PostRamen.tagged_with(params[:tag])
-    # end
+    @q = PostRamen.ransack(params[:q]) #サイドバー
+    @tags = ActsAsTaggableOn::Tag.all #サイドバー
   end
 
   def edit

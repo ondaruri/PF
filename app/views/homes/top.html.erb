@@ -1,16 +1,15 @@
+
+
+
 <div class="container-fluid" >
   <div class="row">
-    <div class="col-3 left-side-bar" style="background-color: orange">
-      left-side-bar
-      <%= render 'layouts/left_side_bar' %>
+    <div class="col-3 left_side_bar">
+      <%= render 'layouts/left_side_bar', q: @q, tags: @tags, post_ramen: @post_ramen %>
     </div>
-    <div class="col-6 main" style="background-color: blue">
-      main
+    <div class="col-5 main">
       <%= render 'homes/main', post_ramens: @post_ramens %>
     </div>
-    <div class="col-3 right-side-bar" style="background-color: orange">
-      right-side-bar
-      <%= render 'layouts/right_side_bar', q: @q, tags: @tags, post_ramen: @post_ramen %>
+    <div class="col-3 right-side-bar">
     </div>
   </div>
 </div>
