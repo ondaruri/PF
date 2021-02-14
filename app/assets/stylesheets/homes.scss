@@ -2,6 +2,94 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.card-content{
-  text-decoration: none;
+// .card-content{
+//   text-decoration: none;
+// }
+
+.post_ramen_main {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.timeline_box {
+    border-bottom: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    font-size: 14px;
+    background-color: white;
+    width: 100%;
+    border-left: 1px solid #cccccc;
+}
+
+.timeline_header {
+    padding: 5px;
+}
+
+.col-2.icon-user {
+  width: 40px;
+  height: 40px;
+  padding-left: 30px;
+}
+
+.user-name {
+  padding-left: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  line-height: 40px;
+}
+
+.timeline_main {
+    display: flex;
+    padding-top: 2px;
+}
+
+
+
+.timeline_preview {
+    padding-left: 8px;
+    padding-right: 10px;
+
+}
+
+.timeline_information {
+    padding-right: 10px;
+    width: 100%;
+}
+
+.timeline_title {
+    font-weight: bold;
+    overflow-wrap: anywhere;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.timeline_content {
+    padding-top: 5px;
+}
+
+.timeline_content_content {
+    padding-top: 5px;
+}
+
+.tag_area {
+    padding-top: 5px;
+}
+
+.time_cell {
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #999999;
+    text-align: right;
+}
+
+.timeline_footer {
+    display: flex;
+    padding: 5px;
+}
+
+.timeline_footer_box {
+    height: 100%;
+    flex: 1;
+    text-align: center;
 }

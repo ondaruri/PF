@@ -1,47 +1,78 @@
-<div class="card border-secondary" style="width: 100%;">
-  <% post_ramens.each do |post_ramen| %>
-  <div class="card-header">
-    <div class="row">
-      <div class="card-title col-8">Title:  <%= post_ramen.title %></div>
-      <div class="card-review col-4">
-        <div id="star-rate-<%= post_ramen.id %>">
-          <script>
-          $('#star-rate-<%= post_ramen.id %>').raty({
-            size: 20,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= post_ramen.review %>,
-          });
-        </script>
+    <div class="post_ramen_main">
+      <% post_ramens.each do |post_ramen| %>
+      <div class="timeline_box">
+
+        <div class="timeline_header">
+          <div class="row">
+            <div class="col-2 icon-user">
+              <%= link_to user_path(post_ramen.user) do %>
+              <%= attachment_image_tag post_ramen.user, :image, fallback: "no_image.jpg", size: "50x50" %>
+              <% end %>
+            </div>
+            <div class="col-3 user-name">
+              <%= post_ramen.user.name %>
+            </div>
+            <div class="col-4 review">
+              <div id="star-rate-<%= post_ramen.id %>">
+                <script>
+                  $('#star-rate-<%= post_ramen.id %>').raty({
+                    size: 20,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= post_ramen.review %>,
+                  });
+              </script>
+              </div>
+            </div>
+            <div class="col-3 time_cell">
+              <%= post_ramen.created_at.strftime('%Y/%m/%d %R') %>
+            </div>
+          </div>
+        </div>
+        <div class="timeline_main">
+          <div class="timeline_preview">
+            <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "200x200" %>
+          </div>
+          <div class="timeline_information">
+            <div class="timeline_title">
+              店名： <%= post_ramen.title %>
+            </div>
+            <div class="timeline_content">
+              <div class="timeline_content_content">
+                <%= post_ramen.content %>
+              </div>
+              <div class="tag_area">
+                <% post_ramen.tags.each do |tag| %>
+                  <%= link_to "#"+tag.name, post_ramens_path(tag.name), class: "badge badge-pill badge-primary" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline_footer">
+            <div class="col-3 timeline_footer_box">
+              comment
+            </div>
+            <div class="col-3 timeline_footer_box">
+              <%= render 'likes/like_button', post_ramen: post_ramen %>
+            </div>
+            <div class="col-3 timeline_footer_box">
+              edit
+            </div>
+            <div class="col-3 timeline_footer_box">
+              <% if post_ramen.user == current_user %>
+                <%= link_to "削除", post_ramen_path(post_ramen), method: :delete %>
+              <% else %>
+                <%= link_to '  ', root_path, class: 'fas fa-home text-left' %>
+              <% end %>
+              <% end %>
+            </div>
         </div>
       </div>
     </div>
-  </div>
-  <%= link_to post_ramen_path(post_ramen.id) do %>
-  <div class="card-body" >
-      <div class="row">
-        <div class="card-img col-5">
-        <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "150x150" %>
-        </div>
-        <div class="card-content col-7">
-          <%= post_ramen.content %>
-        </div>
-      </div>
-  </div>
-  <% end %>
-  <div class="card-footer text-muted">
-    <div class="row">
-      <div class="col-4">コメント</div>
-      <div class="col-4" id="like-<%= post_ramen.id %>">
-        <%= render 'likes/like_button', post_ramen: post_ramen %>
-      </div>
-      <div class="col-4">お気に入り</div>
-    </div>
-  </div>
-  <% end %>
-</div>
-<%#= paginate @post_ramen %>
+
+
 

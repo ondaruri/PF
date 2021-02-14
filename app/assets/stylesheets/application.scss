@@ -14,3 +14,102 @@
  *= require_self
  */
 @import "bootstrap";
+// ------------------共通---------------------------------
+
+.icon-user .attachment {
+    border-radius: 50%;
+    border: 1px solid #cccccc;
+    border-radius: 50%;
+}
+
+
+.container-fluid {
+  background-color: gray;
+}
+// ------------------------------left---------------------------------
+
+.left_side_bar {
+ padding-right: 0px;
+ padding-left: 50px;
+ background-color: gray;
+  }
+
+.top_left {
+  height: 100%;
+  background-color: white;
+  border-left: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+}
+
+.main {
+  position: relative;
+    width: 100%;
+    padding-right: 0%;
+    padding-left: 0%;
+  }
+
+.left_side_link {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    display: flex;
+    color: black;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+.left_side_icon-outer {
+    width: 40px;
+}
+
+.left_side_text {
+    padding-left: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 35px;
+}
+
+.left_side_search_box {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.left_side_search_check_box {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.left_side_search_content {
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 19px;
+    padding-right: 19px;
+}
+
+.my-big {
+  font-size: 1.5em;
+  }
+
+// ーーーーーーーーーーーーーーメインーーーーーーーーーーー
+
+.attachment.post_ramen {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8%;
+    margin: 10px;
+    border: 1px solid #cccccc;
+}
+
