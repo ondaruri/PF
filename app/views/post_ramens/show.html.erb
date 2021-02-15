@@ -55,6 +55,7 @@
             </div>
           </div>
         </div>
+        <% if @post_ramen.user == current_user %>
         <div class="timeline_footer">
             <div class="col-3 timeline_footer_box">
               comment
@@ -63,20 +64,25 @@
               <%= render 'likes/like_button', post_ramen: @post_ramen %>
             </div>
             <div class="col-3 timeline_footer_box">
-              <% if @post_ramen.user == current_user %>
-                <%= link_to "編集", edit_post_ramen_path(@post_ramen) %>
-              <% else %>
-
-              <% end %>
+              <%= link_to "編集", edit_post_ramen_path(@post_ramen) %>
             </div>
             <div class="col-3 timeline_footer_box">
-              <% if @post_ramen.user == current_user %>
-                <%= link_to "削除", post_ramen_path(@post_ramen), method: :delete %>
-              <% else %>
-                <%= link_to '  ', root_path, class: 'fas fa-home text-left' %>
-              <% end %>
+              <%= link_to "削除", post_ramen_path(@post_ramen), method: :delete %>
             </div>
         </div>
+        <% else %>
+        <div class="timeline_footer">
+            <div class="col-4 timeline_footer_box">
+              comment
+            </div>
+            <div class="col-4 timeline_footer_box">
+              <%= render 'likes/like_button', post_ramen: @post_ramen %>
+            </div>
+            <div class="col-4 timeline_footer_box">
+              <%= link_to "HOME", root_path %>
+            </div>
+        </div>
+        <% end %>
       </div>
       <% @post_ramen.post_comments.each do |post_comment| %>
       <div class="comment_box">
