@@ -8,32 +8,32 @@
       <div class="row">
       <div class="timeline_box">
         <div class="timeline_header row">
-            <div class="col-2 icon-user">
-          <%= link_to user_path(post_ramen.user) do %>
-          <%= attachment_image_tag post_ramen.user, :image, fallback: "no_image.jpg", size: "50x50" %>
-          <% end %>
+          <div class="col-2 icon-user">
+            <%= link_to user_path(post_ramen.user) do %>
+            <%= attachment_image_tag post_ramen.user, :image, fallback: "no_image.jpg", size: "50x50" %>
+            <% end %>
           </div>
-            <div class="col-3 user_name">
-              <%= post_ramen.user.name %>
-            </div>
-            <div class="col-4 review">
-              <div id="star-rate-<%= post_ramen.id %>">
-                <script>
-                  $('#star-rate-<%= post_ramen.id %>').raty({
-                    size: 20,
-                    starOff:  '<%= asset_path('star-off.png') %>',
-                    starOn : '<%= asset_path('star-on.png') %>',
-                    starHalf: '<%= asset_path('star-half.png') %>',
-                    half: true,
-                    readOnly: true,
-                    score: <%= post_ramen.review %>,
-                  });
+          <div class="col-3 user_name">
+            <%= post_ramen.user.name %>
+          </div>
+          <div class="col-4 review">
+            <div id="star-rate-<%= post_ramen.id %>">
+              <script>
+                $('#star-rate-<%= post_ramen.id %>').raty({
+                  size: 20,
+                  starOff:  '<%= asset_path('star-off.png') %>',
+                  starOn : '<%= asset_path('star-on.png') %>',
+                  starHalf: '<%= asset_path('star-half.png') %>',
+                  half: true,
+                  readOnly: true,
+                  score: <%= post_ramen.review %>,
+                });
               </script>
-              </div>
             </div>
-            <div class="col-3 time_cell">
-              <%= post_ramen.created_at.strftime('%Y/%m/%d %R') %>
-            </div>
+          </div>
+          <div class="col-3 time_cell">
+            <%= post_ramen.created_at.strftime('%Y/%m/%d %R') %>
+          </div>
         </div> <!-- end time_line_header -->
         <div class="timeline_main">
           <div class="timeline_preview">
@@ -70,16 +70,12 @@
                 <%= link_to '  ', root_path, class: 'fas fa-home text-left' %>
               <% end %>
           </div>
-          <%# end %>
         </div> <!-- end time_line_footer -->
-        <%# end %>
       </div> <!-- end time_line_box -->
-      <%# end %>
       </div> <!-- end row -->
       <% end %>
     </div> <!-- end post_rames_main -->
     <div class="col-3 right-side-bar">
-
     </div>
   </div> <!-- end row -->
 </div>
