@@ -57,23 +57,33 @@
             </div>
           </div>
         </div>
+        <% if post_ramen.user == current_user %>
         <div class="timeline_footer row">
           <div class="col-3 timeline_footer_box">komento</div>
           <div class="col-3 timeline_footer_box">
             <%= render 'likes/like_button', post_ramen: post_ramen %>
           </div>
-          <div class="col-3 timeline_footer_box">edit</div>
           <div class="col-3 timeline_footer_box">
-            <% if post_ramen.user == current_user %>
-                <%= link_to "削除", post_ramen_path(post_ramen), method: :delete %>
-              <% else %>
-                <%= link_to '  ', root_path, class: 'fas fa-home text-left' %>
-              <% end %>
+            <%= link_to "編集", edit_post_ramen_path(post_ramen) %>
+          </div>
+          <div class="col-3 timeline_footer_box">
+            <%= link_to "削除", post_ramen_path(post_ramen), method: :delete %>
           </div>
         </div> <!-- end time_line_footer -->
+        <% else %>
+        <div class="timeline_footer row">
+          <div class="col-4 timeline_footer_box">komento</div>
+          <div class="col-4 timeline_footer_box">
+            <%= render 'likes/like_button', post_ramen: post_ramen %>
+          </div>
+          <div class="col-4 timeline_footer_box">
+            <%= link_to "HOME", root_path %>
+          </div>
+        </div> <!-- else end time_line_footer -->
+        <% end %> <!--- else end ----->
       </div> <!-- end time_line_box -->
       </div> <!-- end row -->
-      <% end %>
+      <% end %> <!-- each文 end -------->
     </div> <!-- end post_rames_main -->
     <div class="col-3 right-side-bar">
     </div>

@@ -1,2 +1,43 @@
-<h1>PostRamens#edit</h1>
-<p>Find me in app/views/post_ramens/edit.html.erb</p>
+<h1>編集画面</h1>
+
+<div class="form">
+  <%= form_with model: @post_ramen, local:true do |f| %>
+
+  <h4>画像</h4>
+    <%= attachment_image_tag @post_ramen, :image, fallback: "no_image.jpg", size: "200x200" %>
+  <h4>タイトル</h4>
+    <%= f.text_field :title %>
+  <h4>投稿文</h4>
+    <%= f.text_area :content %>
+  <h4>店名</h4>
+    <%= f.text_area :address %>
+
+  <!--評価-->
+  <div id="star">
+    <h4>評価</h4>
+    <%= f.hidden_field :review, id: :review_star %>
+  </div>
+    <%= f.hidden_field :user_id, id: current_user.id, value: current_user.id %>
+    <label class="col-sm-12">タグ</label>
+      <div class="col-sm-12">
+        <% @tags.each do |tag| %>
+          <%= f.check_box :tag_list, { multiple: true }, "#{tag.name}", nil %>
+          <%= f.label " #{tag.name}", class: "label label-default" %>
+        <% end %>
+      </div>
+    <%= f.submit '変更を保存する' %>
+  <% end %>
+</div>
+
+
+
+<script type="text/javascript">
+  $('#star').raty({
+    size : 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'post_ramen[review]', //登録するモデル名とカラム名を記述
+    half: true,
+  });
+</script>
