@@ -1,0 +1,38 @@
+<div class="top_left">
+  <div class="left_side_links">
+    <% if user_signed_in? %>
+      <div class="left_side_link"><%= link_to '  ホーム', root_path, class: 'fas fa-home my-big text-left' %></div>
+      <div class="left_side_link"><%= link_to '  マイページ', user_path(current_user), class: 'fas fa-user my-big text-left' %></div>
+      <div class="left_side_link"><%= link_to '  投稿する', new_post_ramen_path, class: 'fas fa-edit my-big text-left' %></div>
+      <div class="left_side_link"><%= link_to ' ログアウト', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt my-big text-let' %></div>
+    <% else %>
+      <div class="left_side_link"><%= link_to '  ', root_path, class: 'fas fa-home text-left' %></div>
+      <div class="left_side_link"><%= link_to '  ホーム', root_path, class: 'fas fa-home  text-left' %></div>
+      <div class="left_side_link"><%= link_to ' 会員登録', new_user_registration_path,class: 'fas fa-user-plus nav-link my-big text-light' %></div>
+      <div class="left_side_link"><%= link_to ' ログイン', new_user_session_path ,class: 'fas fa-sign-in-alt nav-link my-big text-light'%></div>
+    <% end %>
+  </div>
+  <div class="left_side_search_box">
+    <div class="left_side_search_content">
+      <div class="left_side_search_form">
+        <%= search_form_for q do |f| %>
+        キーワード検索:<br>
+        <%= f.search_field :title_or_content_or_shop_name_cont %><br>
+        <!--評価<%#= f.number_field :review_gteq %>以上〜<br>-->
+        <%= f.submit "検索" %>
+        <% end %>
+      </div>
+      <div class="left_side_search_check_box">
+        <%= form_with model: tags, url: post_ramens_path, method: 'GET', local: true do |f| %>
+          <% tags.each do |tag| %>
+            <%= f.check_box :name, { multiple: true }, "#{tag.name}", nil %>
+            <%= f.label " #{tag.name}", class: "label label-default" %>
+          <% end %><br>
+          <%= f.radio_button :search_method, "AND", class: "custom-radio", checked: true %>AND
+          <%= f.radio_button :search_method, "OR", class: "custom-radio" %>OR<br>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

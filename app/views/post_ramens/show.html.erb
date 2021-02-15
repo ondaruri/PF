@@ -1,0 +1,158 @@
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-3 left_side_bar">
+      <%= render 'layouts/left_side_bar', q: @q, tags: @tags, post_ramen: @post_ramen %>
+    </div>       <!--#------------------メイン--------------------------->
+    <div class="col-5 post_ramen_main">
+      <div class="timeline_box">
+        <div class="timeline_header">
+          <div class="row">
+            <div class="col-2 icon-user">
+              <%= link_to user_path(@post_ramen.user) do %>
+              <%= attachment_image_tag @post_ramen.user, :image, fallback: "no_image.jpg", size: "50x50" %>
+              <% end %>
+            </div>
+            <div class="col-3 user-name">
+              <%= @post_ramen.user.name %>
+            </div>
+            <div class="review col-4">
+              <div id="star-rate-<%= @post_ramen.id %>">
+                <script>
+                  $('#star-rate-<%= @post_ramen.id %>').raty({
+                    size: 20,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= @post_ramen.review %>,
+                  });
+              </script>
+              </div>
+            </div>
+            <div class="col-3 time_cell">
+              <%= @post_ramen.created_at.strftime('%Y/%m/%d %R') %>
+            </div>
+          </div>
+        </div>
+        <div class="timeline_main">
+          <div class="timeline_preview">
+            <%= attachment_image_tag @post_ramen, :image, fallback: "no_image.jpg", size: "200x200" %>
+          </div>
+          <div class="timeline_information">
+            <div class="timeline_title">
+              店名： <%= @post_ramen.title %>
+            </div>
+            <div class="timeline_content">
+              <div class="timeline_content_content">
+                <%= @post_ramen.content %>
+              </div>
+              <div class="tag_area">
+                <% @post_ramen_tags.each do |tag| %>
+                  <%= link_to "#"+tag.name, post_ramens_path(tag.name), class: "badge badge-pill badge-primary" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline_footer">
+            <div class="col-3 timeline_footer_box">
+              comment
+            </div>
+            <div class="col-3 timeline_footer_box">
+              <%= render 'likes/like_button', post_ramen: @post_ramen %>
+            </div>
+            <div class="col-3 timeline_footer_box">
+              edit
+            </div>
+            <div class="col-3 timeline_footer_box">
+              <% if @post_ramen.user == current_user %>
+                <%= link_to "削除", post_ramen_path(@post_ramen), method: :delete %>
+              <% else %>
+                <%= link_to '  ', root_path, class: 'fas fa-home text-left' %>
+              <% end %>
+            </div>
+        </div>
+      </div>
+      <% @post_ramen.post_comments.each do |post_comment| %>
+      <div class="comment_box">
+        <div class="timeline_header">
+          <div class="row">
+            <div class="col-2 icon-user">
+              <%= link_to user_path(post_comment.user) do %>
+              <%= attachment_image_tag post_comment.user, :image, fallback: "no_image.jpg", size: "50x50" %>
+              <% end %>
+            </div>
+            <div class="col-3 user-name">
+              <%= post_comment.user.name %>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-3 time_cell">
+                <%= post_comment.created_at.strftime('%Y/%m/%d %R') %>
+            </div>
+          </div>
+        </div>
+        <div class="comment_main">
+          <div class="comment_text">
+            <%= post_comment.content %>
+          </div>
+          <div class="comment_delete_box">
+          <% if post_comment.user == current_user %>
+            <%= link_to "削除", post_ramen_post_comment_path(post_comment.post_ramen, post_comment), class: "comment_delete", method: :delete %>
+          <% end %>
+          </div>
+        </div>
+        <%# end %>
+      </div>
+      <% end %>
+      <div class="comment_new">
+        <div class="comment_new_text">
+        <%= form_with(model:[@post_ramen, @post_comment], local: true) do |f| %>
+          <%= f.text_area :content, placeholder: "コメントをここに", class: "form-control" %>
+        </div>
+        <div class="comment_new_button">
+          <%= f.submit "コメントする", class: "btn btn-secondary" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-4 right_side_bar">  <!-------------------------right_side-------------------------------->
+      <div class="right_side_map">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  let map;
+
+  function initMap() {
+    // geocoderを初期化
+    geocoder = new google.maps.Geocoder()
+
+    map = new google.maps.Map(document.getElementById('map'), {
+      // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+      center: {
+        lat: gon.address.latitude,
+        lng: gon.address.longitude
+      },
+      // マップの倍率はお好みで
+      zoom: 15,
+    });
+
+    marker = new google.maps.Marker({
+      // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+      position: {
+        lat: gon.address.latitude,
+        lng: gon.address.longitude
+      },
+      map: map
+    });
+  }
+</script>
+
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%= ENV['GMAP_API'] %>&callback=initMap">
+</script>

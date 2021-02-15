@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+  <%= search_form_for q do |f| %>
+    キーワード検索<%= f.search_field :title_or_content_or_shop_name_cont %><br>
+    評価<%= f.number_field :review_gteq %>以上〜<br>
+    <%= f.submit "検索" %>
+  <% end %>
+  </div>
+  <div class="row">
+  <%= form_with model: tags, url: post_ramens_path, method: 'GET', local: true do |f| %>
+    <% tags.each do |tag| %>
+      <%= f.check_box :name, { multiple: true }, "#{tag.name}", nil %>
+      <%= f.label " #{tag.name}", class: "label label-default" %>
+      <% end %><
+    <%= f.radio_button :search_method, "AND", class: "custom-radio", checked: true %>AND
+    <%= f.radio_button :search_method, "OR", class: "custom-radio" %>OR
+    <%= f.submit "検索" %>
+  <% end %>
+  </div>
+</div>

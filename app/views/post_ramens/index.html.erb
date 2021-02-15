@@ -1,0 +1,7 @@
+<div>
+<% @post_ramens.each do |post_ramen| %>
+<%= attachment_image_tag(post_ramen.user, :image, size: "100x100" ) %>
+<%= post_ramen.user.name %>
+<%= link_to attachment_image_tag(post_ramen, :image, size: "100x100" ), post_ramen_path(post_ramen ) %>
+<% end %>
+</div>
