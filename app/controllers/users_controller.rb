@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @q = PostRamen.ransack(params[:q]) #サイドバー
     @tags = ActsAsTaggableOn::Tag.all #サイドバー
+    @post_ramens = @user.post_ramens 
   end
 
   def edit
