@@ -78,7 +78,9 @@
         </div>
         <div class="timeline_main">
           <div class="timeline_preview">
-            <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "200x200" %>
+            <%= link_to post_ramen_path(post_ramen) do %>
+              <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "200x200" %>
+            <% end %>
           </div>
           <div class="timeline_information">
             <div class="timeline_title">
