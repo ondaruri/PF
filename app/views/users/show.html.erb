@@ -20,8 +20,16 @@
               <div class="profile_data_content">
                 投稿<br><%= @user.post_ramens.count %>
               </div>
-              <div class="profile_data_content">foro-</div>
-              <div class="profile_data_content">foro-</div>
+              <div class="profile_data_content">
+                <%= link_to follower_user_path(@user) do %>
+                フォロワー<br><%= @user.follower_user.count %>
+                <% end %>
+              </div>
+              <div class="profile_data_content">
+                <%= link_to follows_user_path(@user) do %>
+                フォロー<br><%= @user.following_user.count %>
+                <% end %>
+              </div>
             </div>
           </div>
             <% if @user == current_user %>
@@ -121,71 +129,3 @@
     </div>  <!---user_main div ------->
   </div>  <!---row div ------->
 </div>  <!---conteiner div ------->
-
-
-<%= render 'relationships/follow_button', user: @user %>
-
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-2">
-      <div class="col-lg-2 icon-user">
-          <%= attachment_image_tag  @user, :image, fallback: "no_image.jpg", size: "100x100" %>
-      </div>
-    </div>
-    <div class="col-lg-10">
-      <div class="row">
-        <div class="col-lg-3">
-          <%= @user.name %>
-        </div>
-        <div class="col-lg-2">
-          <% if @user == current_user %>
-          <%= link_to "新規投稿", new_post_ramen_path %>
-          <% end %>
-        </div>
-        <div class="col-lg-5">
-          <% if @user == current_user %>
-          <%= link_to "プロフィールを編集", edit_user_path(@user) %>
-          <% else %>
-          <%= render 'relationships/follow_button', user: @user %>
-          <% end %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          投稿件数   <%= @user.post_ramens.count %>件
-        </div>
-        <div class="col-lg-3">
-          フォロワー<%= @user.follower_user.count %>人
-        </div>
-        <div class="col-lg-3">
-          フォロー<%= @user.following_user.count %>人
-        </div>
-      </div>
-      <div class="row">
-        <%= @user.introduction %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="ramen-item">
-    <% @user.post_ramens.each do |post_ramen| %>
-      <%= link_to post_ramen_path(post_ramen) do %>
-      <%= attachment_image_tag(post_ramen, :image, fallback: "no-image-icon.jpg") %>
-      <!--<= attachment_image_tag(post_ramen, :image, fallback: "no-image-icon.jpg") %>-->
-      <% end %>
-    <% end %>
-    </div>
-  </div>
-</div>
-
-</div><div class="container">
-  <div class="row">
-    <div class="col-lg-4" style="background-color: orange;">
-      <h2>サイドバー</h2>
-    </div>
-    <div class="col-lg-8">
-      <h5>投稿記事並ぶところ</h5>
-    </div>
-  </div>
-</div>

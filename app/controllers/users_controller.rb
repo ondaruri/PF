@@ -21,6 +21,14 @@ class UsersController < ApplicationController
       render action: :edit
     end
   end
+  
+  def follower
+    @user = User.find(params[:id])
+  end
+  
+  def follows
+    @user = User.find(params[:id])
+  end
 
   # def my_page
   #   @user = current_user
