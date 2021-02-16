@@ -27,7 +27,11 @@
               <%= follower.introduction %>
             </td>
             <td>
-              <%= render 'relationships/follow_button', user: current_user %>
+              <% if current_user.following?(follower) %>
+                <%= link_to 'フォロー外す', unfollow_path(@user.id), class: 'btn btn-secondary', method: :post %>
+              <% else %>
+                <%= link_to 'フォローする', follow_path(@user.id), class: 'btn btn-secondary ', method: :post %>
+              <% end %>
             </td>
           </tr>
           <% end %>
