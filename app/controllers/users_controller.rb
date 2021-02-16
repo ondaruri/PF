@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   def show
     @current_user = current_user
     @user = User.find(params[:id])
+    @q = PostRamen.ransack(params[:q]) #サイドバー
+    @tags = ActsAsTaggableOn::Tag.all #サイドバー
   end
 
   def edit

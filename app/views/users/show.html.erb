@@ -1,5 +1,45 @@
-<%= @user.name %>さんのページだよ<br>
-私は<%= @current_user.name %><br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3 left_side_bar">
+    <%= render 'layouts/left_side_bar', q: @q, tags: @tags %>
+    </div>
+    <div class="col-5 user_main">
+      <div class="profile">
+        <div class="profile_box">
+          <div class="profile_icon">
+            <%= attachment_image_tag  @user, :image, fallback: "no_image.jpg", size: "50x50" %>
+          </div>
+          <div class="profile_name">
+             <%= @user.name %>
+          </div>
+          <div class="profile_text">
+            <%= @user.introduction %>
+          </div>
+          <div class="profile_data">
+            <div class="profile_data_box">
+              <div class="profile_data_content">
+                投稿<br><%= @user.post_ramens.count %>
+              </div>
+              <div class="profile_data_content">foro-</div>
+              <div class="profile_data_content">foro-</div>
+            </div>
+          </div>
+            <% if @user == current_user %>
+            <div class="profile_button">
+            <%= link_to "プロフィールを編集", edit_user_path(@user) %>
+          </div>
+            <% else %>
+            <div class="profile_button">
+            <%= render 'relationships/follow_button', user: @user %>
+          </div>
+            <% end %>
+        </div>
+      </div>
+    </div>  <!---user_main div ------->
+  </div>  <!---row div ------->
+</div>  <!---conteiner div ------->
+
+
 <%= render 'relationships/follow_button', user: @user %>
 
 
