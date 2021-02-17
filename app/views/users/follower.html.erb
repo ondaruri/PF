@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-lg-10 px-sm-0 mx-auto my-5">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th></th>
+            <th>User Name</th>
+            <th>Introduction</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @user.follower_user.each do |follower| %>
+          <tr>
+            <td>
+              <%= link_to user_path(follower) do %>
+              <%= attachment_image_tag follower, :image, fallback: "no_image.jpg", size: "50x50" %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to user_path(follower) do %>
+              <%= follower.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= follower.introduction %>
+            </td>
+            <td>
+              <% if current_user.following?(follower) %>
+                <%= link_to 'フォロー外す', unfollow_path(@user.id), class: 'btn btn-secondary', method: :post %>
+              <% else %>
+                <%= link_to 'フォローする', follow_path(@user.id), class: 'btn btn-secondary ', method: :post %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

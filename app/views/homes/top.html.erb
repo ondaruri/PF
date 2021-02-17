@@ -5,7 +5,6 @@
     </div>
     <div class="col-5 post_ramen_main">
       <% @post_ramens.each do |post_ramen| %>
-      <div class="row">
       <div class="timeline_box">
         <div class="timeline_header row">
           <div class="col-2 icon-user">
@@ -61,7 +60,9 @@
         <div class="timeline_footer row">
           <div class="col-3 timeline_footer_box">komento</div>
           <div class="col-3 timeline_footer_box">
-            <%= render 'likes/like_button', post_ramen: post_ramen %>
+            <div class="like_button_area-<%= post_ramen.id %>">
+              <%= render 'likes/like_button', post_ramen: post_ramen %>
+            </div>
           </div>
           <div class="col-3 timeline_footer_box">
             <%= link_to "編集", edit_post_ramen_path(post_ramen) %>
@@ -74,7 +75,9 @@
         <div class="timeline_footer row">
           <div class="col-4 timeline_footer_box">komento</div>
           <div class="col-4 timeline_footer_box">
-            <%= render 'likes/like_button', post_ramen: post_ramen %>
+            <div class="like_button_area-<%= post_ramen.id %>">
+              <%= render 'likes/like_button', post_ramen: post_ramen %>
+            </div>
           </div>
           <div class="col-4 timeline_footer_box">
             <%= link_to "HOME", root_path %>
@@ -82,7 +85,6 @@
         </div> <!-- else end time_line_footer -->
         <% end %> <!--- else end ----->
       </div> <!-- end time_line_box -->
-      </div> <!-- end row -->
       <% end %> <!-- each文 end -------->
     </div> <!-- end post_rames_main -->
     <div class="col-3 right-side-bar">
