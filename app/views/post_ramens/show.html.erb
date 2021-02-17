@@ -88,10 +88,12 @@
         </div>
         <% end %>
       </div>
-        <div id="post_comment">
-          <%= render 'post_comments/index', post_ramen: @post_ramen %>
-          <%= render 'post_comments/post_comments_button', post_ramen: @post_ramen, post_comment: @post_comment %>
-        </div>
+      <div class="post_comment_index_area">
+        <%= render 'post_comments/index', post_ramen: @post_ramen %>
+      </div>
+      <div class="post_comment_form_area">
+        <%= render 'post_comments/post_comments_button', post_ramen: @post_ramen, post_comment: @post_comment %>
+      </div>
     </div>
     <div class="col-4 right_side_bar">  <!-------------------------right_side-------------------------------->
       <div class="right_side_map">
@@ -99,7 +101,7 @@
       </div>
     </div>
   </div>
-</div>
+</div>  <!----------------------container fluid---------->
 
 
 <script>
