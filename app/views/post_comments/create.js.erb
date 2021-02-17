@@ -1,0 +1,10 @@
+$('.comment_box-<%= @post_ramen.id %>').html("<%= j(render partial: 'post_comments/index', locals: { post_ramen: @post_ramen }) %>");
+$(".comment_new-<%= @post_ramen.id %>").html("<%= j(render partial: 'post_comments/post_comments_button', locals: { post_ramen: @post_ramen, post_comment: @post_comment }) %>");
+$(".time_line_footer-<%= @post_ramen.id %>").html("<%= post_ramen.post_comments.count %>　件");
+
+
+<!--$('#post_comment_content').val("");-->
+<!--$(".comment_new").val("");-->
+
+$("#post_comment").html("<%= j(render partial: 'post_comments/index', locals: { post_ramen: @post_ramen }) %>");
+<!--$("#post_comment_index").val("");-->

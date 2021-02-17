@@ -104,7 +104,9 @@
               comment
             </div>
             <div class="col-3 timeline_footer_box">
-              <%= render 'likes/like_button', post_ramen: post_ramen %>
+              <div class="like_button_area-<%= post_ramen.id %>">
+                <%= render 'likes/like_button', post_ramen: post_ramen %>
+              </div>
             </div>
             <div class="col-3 timeline_footer_box">
               <%= link_to "編集", edit_post_ramen_path(post_ramen) %>
@@ -119,7 +121,9 @@
               comment
             </div>
             <div class="col-4 timeline_footer_box">
-              <%= render 'likes/like_button', post_ramen: post_ramen %>
+              <div class="like_button_area-<%= post_ramen.id %>">
+                <%= render 'likes/like_button', post_ramen: post_ramen %>
+              <div class="like_button_area-<%= post_ramen.id %>">
             </div>
             <div class="col-4 timeline_footer_box">
               <%= link_to "HOME", root_path %>
