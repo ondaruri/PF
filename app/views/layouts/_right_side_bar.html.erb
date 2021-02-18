@@ -1,20 +1,37 @@
-<div class="container">
-  <div class="row">
-  <%= search_form_for q do |f| %>
-    キーワード検索<%= f.search_field :title_or_content_or_shop_name_cont %><br>
-    評価<%= f.number_field :review_gteq %>以上〜<br>
-    <%= f.submit "検索" %>
-  <% end %>
+<div class="container_right">
+  <div class="tab_list_name">
+   いいね獲得ランキング
   </div>
-  <div class="row">
-  <%= form_with model: tags, url: post_ramens_path, method: 'GET', local: true do |f| %>
-    <% tags.each do |tag| %>
-      <%= f.check_box :name, { multiple: true }, "#{tag.name}", nil %>
-      <%= f.label " #{tag.name}", class: "label label-default" %>
-      <% end %><
-    <%= f.radio_button :search_method, "AND", class: "custom-radio", checked: true %>AND
-    <%= f.radio_button :search_method, "OR", class: "custom-radio" %>OR
-    <%= f.submit "検索" %>
-  <% end %>
+  <ul class="tab-list">
+    <li class="tab tab-active">投稿</li>
+    <li class="tab">ユーザー</li>
+    <li class="tab">ユーザー週間</li>
+    <li class="tab">ユーザー月間</li>
+  </ul>
+  <div class="tabbox-contents">
+    <div class="tabbox box-show">
+      <p>タブ1の中身が入ります。</p>
+      <% post_ramen_all_ranks.each do |post_ramen| %>
+       <%= post_ramen.user.name %>
+      <% end %>
+    </div>
+    <div class="tabbox">
+      <p>タブ2の中身が入ります。</p>
+      <% most_used_tags.each do |tag| %>
+        <%= link_to "#{tag.name}(#{tag.taggings_count})", post_ramen_path(tag.name), class: "label label-default" %>
+
+      <% end %>
+    </div>
+    <div class="tabbox">
+      <p>タブ3の中身が入ります。</p>
+      <p>タブ3の中身が入ります。</p>
+      <p>タブ3の中身が入ります。</p>
+    </div>
+    <div class="tabbox">
+      <p>タブ４の中身が入ります。</p>
+      <p>タブ４の中身が入ります。</p>
+      <p>タブ４の中身が入ります。</p>
+    </div>
   </div>
 </div>
+

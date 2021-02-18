@@ -37,7 +37,7 @@
         <div class="timeline_main">
           <div class="timeline_preview">
             <%= link_to post_ramen_path(post_ramen) do %>
-              <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "200x200" %>
+              <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "250x250" %>
             <% end %>
           </div>
           <div class="timeline_information">
@@ -87,7 +87,8 @@
       </div> <!-- end time_line_box -->
       <% end %> <!-- each文 end -------->
     </div> <!-- end post_rames_main -->
-    <div class="col-3 right-side-bar">
+    <div class="col-4 right-side-bar">
+      <%= render 'layouts/right_side_bar', post_ramen_all_ranks: @post_ramen_all_ranks, most_used_tags: @most_used_tags %>
     </div>
   </div> <!-- end row -->
 </div>
