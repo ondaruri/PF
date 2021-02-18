@@ -21,9 +21,9 @@
                 投稿<br><%= @user.post_ramens.count %>
               </div>
               <div class="profile_data_content">
-                <%= link_to follower_user_path(@user) do %>
-                フォロワー<br><%= @user.follower_user.count %>
-                <% end %>
+                <div class="followed_count">
+                  <%= render 'relationships/followed_count', user: @user %>
+                </div>
               </div>
               <div class="profile_data_content">
                 <%= link_to follows_user_path(@user) do %>
@@ -34,12 +34,12 @@
           </div>
             <% if @user == current_user %>
             <div class="profile_button">
-            <%= link_to "プロフィールを編集", edit_user_path(@user) %>
-          </div>
+              <%= link_to "プロフィールを編集", edit_user_path(@user) %>
+            </div>
             <% else %>
             <div class="profile_button">
-            <%= render 'relationships/follow_button', user: @user %>
-          </div>
+              <%= render 'relationships/follow_button', user: @user %>
+            </div>
             <% end %>
         </div>
       </div>
