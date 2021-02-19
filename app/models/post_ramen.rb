@@ -29,6 +29,11 @@ class PostRamen < ApplicationRecord
     PostRamen.joins(:likes).where(likes: { created_at: now.beginning_of_year..now.end_of_year }).group(:id).order("count(post_ramen_id) desc").limit(3)
   end
 
+  # def self.create_tag_ranks
+  #   post_ramens = PostRamen.all
+  #   PostRamen.joins(:ActsAsTaggableOn::Tag).where(name: "とんこつ").group(:id).order("count(post_ramen_id) desc").limit(3)
+  # end
+
   # def self.favorited_user(user)
   #   ramens = PostRamen.all　#全ての投稿を取得
   #   users = User.all
