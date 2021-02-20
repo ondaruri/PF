@@ -78,21 +78,23 @@
     <div class="left_side_search_content">
       <div class="left_side_search_form">
         <%= search_form_for q do |f| %>
-        キーワード検索:<br>
-        <%= f.search_field :content_or_shop_name_cont %><br>
+        キーワード検索:
+        <%= f.search_field :content_or_shop_name_cont, class: "col" %><br>
         <!--評価<%#= f.number_field :review_gteq %>以上〜<br>-->
-        <%= f.submit "検索" %>
+        <%= f.submit "検索", class: 'btn btn-secondary form-control'%>
         <% end %>
       </div>
       <div class="left_side_search_check_box">
         <%= form_with model: tags, url: post_ramens_path, method: 'GET', local: true do |f| %>
           <% tags.each do |tag| %>
+          <div class="search_text">
             <%= f.check_box :name, { multiple: true }, "#{tag.name}", nil %>
             <%= f.label " #{tag.name}", class: "label label-default" %>
-          <% end %><br>
+          </div>
+          <% end %>
           <%= f.radio_button :search_method, "AND", class: "custom-radio", checked: true %>AND
           <%= f.radio_button :search_method, "OR", class: "custom-radio" %>OR<br>
-          <%= f.submit "検索" %>
+          <%= f.submit "検索", class: 'btn btn-secondary form-control' %>
         <% end %>
       </div>
     </div>
