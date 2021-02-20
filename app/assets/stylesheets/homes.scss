@@ -17,7 +17,7 @@
     font-size: 14px;
     background-color: white;
     // width: 100%;
-    border-left: 1px solid #cccccc;
+    // border-left: 1px solid #cccccc;
 }
 
 .timeline_header {
@@ -97,27 +97,3 @@
 }
 // --------------right_side-------------
 
-.rank_box {
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
-    border-right: 1px solid #cccccc;
-    font-size: 14px;
-    background-color: white;
-    border-left: 1px solid #cccccc;
-
-}
-
-.rank_count {
-  display: flex;
-  align-items: center;
-  text-align: -webkit-center;
-}
-
-.tag_rank_title {
-  line-height: 3;
-  text-align: -webkit-center;
-}
-
-.rank {
-  line-height: 3;
-}
