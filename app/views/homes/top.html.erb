@@ -1,7 +1,7 @@
 <div class="container-fluid" >
   <div class="row">
     <div class="col-3 left_side_bar">
-      <%= render 'layouts/left_side_bar', q: @q, tags: @tags, post_ramen: @post_ramen %>
+      <%= render 'layouts/left_side_bar', q: @q, tags: @tags %>
     </div>
     <div class="col-5 post_ramen_main">
       <% @post_ramens.each do |post_ramen| %>
@@ -42,7 +42,7 @@
           </div>
           <div class="timeline_information">
             <div class="timeline_title">
-              店名： <%= post_ramen.address %>
+              店名： <%= post_ramen.shop_name %>
             </div>
             <div class="timeline_content">
               <div class="timeline_content_content">

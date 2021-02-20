@@ -22,7 +22,7 @@
       <div class="left_side_search_form">
         <%= search_form_for q do |f| %>
         キーワード検索:<br>
-        <%= f.search_field :title_or_content_or_shop_name_cont %><br>
+        <%= f.search_field :content_or_shop_name_cont %><br>
         <!--評価<%#= f.number_field :review_gteq %>以上〜<br>-->
         <%= f.submit "検索" %>
         <% end %>

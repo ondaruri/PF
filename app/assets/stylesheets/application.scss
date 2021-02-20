@@ -31,14 +31,14 @@
 }
 
 .container-fluid {
-  background-color: gray;
+  background-color: white;
 }
 // ------------------------------left---------------------------------
 
 .left_side_bar {
  padding-right: 0px;
  padding-left: 50px;
- background-color: gray;
+ background-color: white;
   }
 
 .top_left {
@@ -157,11 +157,29 @@ a {
   border-left: solid 1px #CCC;
   border-bottom: solid 1px #CCC;
 }
+
+.tab2 {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  border-bottom: solid 1px #CCC;
+}
 .tab:first-child {
+  border-left: none;
+}
+
+.tab2:first-child {
   border-left: none;
 }
 /* ↓タブがアクティブになっている時のデザイン↓ */
 .tab-active {
+  color: #FFF;
+  background: #19b5d1;
+  transition: all 0.2s ease-in-out;
+}
+
+.tab2-active {
   color: #FFF;
   background: #19b5d1;
   transition: all 0.2s ease-in-out;
@@ -174,8 +192,19 @@ a {
   padding: 15px;
   background-color: white;
 }
+
+.tabbox2 {
+  /* ↓タブの中身を最初は非表示↓ */
+  display: none;
+  /* ↓タブの中身の余白↓ */
+  padding: 15px;
+  background-color: white;
+}
 /* ↓このクラスがついている時だけタブの中身を表示↓ */
 .box-show {
   display: block;
 }
 
+.box2-show {
+  display: block;
+}

@@ -30,8 +30,7 @@ class PostRamen < ApplicationRecord
   end
 
   # def self.create_tag_ranks
-  #   post_ramens = PostRamen.all
-  #   PostRamen.joins(:ActsAsTaggableOn::Tag).where(name: "とんこつ").group(:id).order("count(post_ramen_id) desc").limit(3)
+  #   PostRamen.joins(:likes).tagged_with("とんこつ").where(likes: { created_at: now.beginning_of_week..now.end_of_week}).group(:id).order("count(post_ramen_id) desc").limit(3)
   # end
 
   # def self.favorited_user(user)
