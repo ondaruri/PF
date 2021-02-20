@@ -12,7 +12,7 @@
               <%= attachment_image_tag @post_ramen.user, :image, fallback: "no_image.jpg", size: "50x50" %>
               <% end %>
             </div>
-            <div class="col-3 user-name">
+            <div class="col-3 user_name">
               <%= @post_ramen.user.name %>
             </div>
             <div class="review col-4">
@@ -68,10 +68,14 @@
             </div>
           </div>
           <div class="col-3 timeline_footer_box">
-            <%= link_to "編集", edit_post_ramen_path(@post_ramen) %>
+            <%= link_to edit_post_ramen_path(@post_ramen) do %>
+              <i class="fas fa-edit"></i>
+            <% end %>
           </div>
           <div class="col-3 timeline_footer_box">
-            <%= link_to "削除", post_ramen_path(@post_ramen), method: :delete %>
+            <%= link_to post_ramen_path(@post_ramen), method: :delete do %>
+              <i class="far fa-trash-alt"></i>
+            <% end %>
           </div>
         </div>
         <% else %>

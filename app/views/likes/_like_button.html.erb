@@ -2,13 +2,14 @@
   <% if post_ramen.liked_by?(current_user) %>
     <p>
       <%= link_to post_ramen_like_path(post_ramen, post_ramen.id), method: :delete, remote: true do %>
-        ♥<%= post_ramen.likes.count %> いいね
+        <i class="fas fa-thumbs-up"></i>
+        <%= post_ramen.likes.count %>
     </p>
     <% end %>
   <% else %>
     <p>
       <%= link_to post_ramen_likes_path(post_ramen), method: :post, remote: true do %>
-        ♡<%= post_ramen.likes.count %> いいね
+        <i class="far fa-thumbs-up"></i><%= post_ramen.likes.count %>
   <% end %>
     </p>
   <% end %>

@@ -108,10 +108,14 @@
               </div>
             </div>
             <div class="col-3 timeline_footer_box">
-              <%= link_to "編集", edit_post_ramen_path(post_ramen) %>
+              <%= link_to edit_post_ramen_path(post_ramen) do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
             </div>
             <div class="col-3 timeline_footer_box">
-              <%= link_to "削除", post_ramen_path(post_ramen), method: :delete %>
+              <%= link_to post_ramen_path(post_ramen), method: :delete do %>
+                <i class="far fa-trash-alt"></i>
+              <% end %>
             </div>
         </div>
         <% else %>
