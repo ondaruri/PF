@@ -10,6 +10,72 @@
     height: 300px;
     object-fit: cover;
 }
+
+.col-5.user_main {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.profile_box {
+    border-bottom: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    font-size: 14px;
+    font-color: white;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+}
+
+.profile_name {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    font-size: 14px;
+    font-color: white;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.profile_text {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.profile_data {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+}
+
+.profile_data_box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.profile_data_content {
+    background-color: white;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 110px;
+}
+
+.profile_button {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.follow_button {
+
+}
 // .post_ramen {
 //     width: 150px;
 //     height: 150px;

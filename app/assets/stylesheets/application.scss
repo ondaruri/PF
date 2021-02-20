@@ -16,6 +16,8 @@
 @import "bootstrap";
 // ------------------共通---------------------------------
 
+
+
 .icon-user .attachment {
     border-radius: 50%;
     border: 1px solid #cccccc;
@@ -29,14 +31,14 @@
 }
 
 .container-fluid {
-  background-color: gray;
+  background-color: white;
 }
 // ------------------------------left---------------------------------
 
 .left_side_bar {
  padding-right: 0px;
  padding-left: 50px;
- background-color: gray;
+ background-color: white;
   }
 
 .top_left {
@@ -68,8 +70,13 @@ a {
     background-color: transparent;
   }
 
-.left_side_icon-outer {
+.left_side_icon_outer {
     width: 40px;
+}
+
+.left_side_icon {
+    font-size: 35px;
+    line-height: 35px;
 }
 
 .left_side_text {
@@ -89,7 +96,7 @@ a {
 .left_side_search_check_box {
     margin-top: 10px;
     padding: 10px;
-    border: 1px solid #cccccc;
+    // border: 1px solid #cccccc;
     border-radius: 8px;
     font-size: 15px;
 }
@@ -103,12 +110,25 @@ a {
     padding-right: 19px;
 }
 
+.left-side_user_icon {
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
 .my-big {
   font-size: 1.5em;
   }
 
 // ーーーーーーーーーーーーーーメインーーーーーーーーーーー
 
+.user_name {
+    padding-left: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    line-height: 40px;
+  }
 .attachment.post_ramen {
     width: 150px;
     height: 150px;
@@ -118,3 +138,142 @@ a {
     border: 1px solid #cccccc;
 }
 
+.attachment.post_ramen.right_side_image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8%;
+    margin: 10px;
+    border: 1px solid #cccccc;
+}
+
+.timeline_footer_box {
+    color: black;
+}
+
+// -----------------右サイド------------------------
+
+
+/* ↓外枠↓ */
+.container_right {
+  margin: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  // border: 1px solid #ccc;
+
+}
+
+.tab_list_name {
+  text-align: center;
+  background-color: #505050;
+  margin-top: 20px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  color: white;
+  padding: 5px;
+  font-size: 13px;
+
+}
+
+/* ↓タブを横並び↓ */
+.tab-list {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+
+
+}
+/* ↓タブのデザイン↓ */
+.tab {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  font-size: 13px;
+
+
+}
+
+.tab2 {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  border-left: solid 1px #CCC;
+  font-size: 13px;
+
+}
+.tab:first-child {
+  border-left: none;
+}
+
+.tab2:first-child {
+  border-left: none;
+}
+/* ↓タブがアクティブになっている時のデザイン↓ */
+.tab-active {
+  color: #FFF;
+  background: #19b5d1;
+  transition: all 0.2s ease-in-out;
+}
+
+.tab2-active {
+  color: #FFF;
+  background: #19b5d1;
+  transition: all 0.2s ease-in-out;
+}
+/* ↓タブの中身↓ */
+.tabbox {
+  /* ↓タブの中身を最初は非表示↓ */
+  display: none;
+  /* ↓タブの中身の余白↓ */
+  padding: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: white;
+}
+
+.tabbox2 {
+  /* ↓タブの中身を最初は非表示↓ */
+  display: none;
+  /* ↓タブの中身の余白↓ */
+  padding: 15px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  background-color: white;
+}
+/* ↓このクラスがついている時だけタブの中身を表示↓ */
+.box-show {
+  display: block;
+}
+
+.box2-show {
+  display: block;
+}
+
+.rank_box {
+    // border-top: 1px solid #cccccc;
+    border-bottom: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    font-size: 14px;
+    background-color: white;
+    border-left: 1px solid #cccccc;
+
+}
+
+.rank_count {
+  display: flex;
+  align-items: center;
+  text-align: -webkit-center;
+}
+
+.tag_rank_title {
+  line-height: 3;
+  text-align: -webkit-center;
+}
+
+.rank {
+  line-height: 3;
+}

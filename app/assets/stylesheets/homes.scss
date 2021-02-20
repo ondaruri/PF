@@ -16,8 +16,8 @@
     border-right: 1px solid #cccccc;
     font-size: 14px;
     background-color: white;
-    width: 100%;
-    border-left: 1px solid #cccccc;
+    // width: 100%;
+    // border-left: 1px solid #cccccc;
 }
 
 .timeline_header {
@@ -70,6 +70,8 @@
 
 .timeline_content_content {
     padding-top: 5px;
+    overflow-wrap: anywhere;
+
 }
 
 .tag_area {
@@ -93,3 +95,5 @@
     flex: 1;
     text-align: center;
 }
+// --------------right_side-------------
+

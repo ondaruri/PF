@@ -3,6 +3,9 @@ class UsersController < ApplicationController
   def show
     @current_user = current_user
     @user = User.find(params[:id])
+    @q = PostRamen.ransack(params[:q]) #サイドバー
+    @tags = ActsAsTaggableOn::Tag.all #サイドバー
+    @post_ramens = @user.post_ramens
   end
 
   def edit
@@ -17,6 +20,14 @@ class UsersController < ApplicationController
     else
       render action: :edit
     end
+  end
+
+  def follower
+    @user = User.find(params[:id])
+  end
+
+  def follows
+    @user = User.find(params[:id])
   end
 
   # def my_page

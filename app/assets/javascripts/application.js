@@ -1,3 +1,4 @@
+/* global $*/
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -16,5 +17,36 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require_tree .
+
+$(function() {
+    // ↓タブをクリックした時の処理↓
+    $('.tab').click(function(){
+        // ↓現在アクティブなタブを切り替え↓
+        $('.tab-active').removeClass('tab-active');
+        // ↓タブをアクティブにする↓
+        $(this).addClass('tab-active');
+        // ↓現在アクティブなタブの中身を非表示
+        $('.box-show').removeClass('box-show');
+        // ↓クリックしたタブから順番を取得↓
+        const index = $(this).index();
+        // ↓クリックしたタブと同じ順番のコンテンツを表示↓
+        $('.tabbox').eq(index).addClass('box-show');
+    });
+});
+
+$(function() {
+    // ↓タブをクリックした時の処理↓
+    $('.tab2').click(function(){
+        // ↓現在アクティブなタブを切り替え↓
+        $('.tab2-active').removeClass('tab2-active');
+        // ↓タブをアクティブにする↓
+        $(this).addClass('tab2-active');
+        // ↓現在アクティブなタブの中身を非表示
+        $('.box2-show').removeClass('box2-show');
+        // ↓クリックしたタブから順番を取得↓
+        const index = $(this).index();
+        // ↓クリックしたタブと同じ順番のコンテンツを表示↓
+        $('.tabbox2').eq(index).addClass('box2-show');
+    });
+});

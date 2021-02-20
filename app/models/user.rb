@@ -31,4 +31,5 @@ def following?(user)
   following_user.include?(user)
 end
 
+
 end

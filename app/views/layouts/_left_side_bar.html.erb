@@ -1,41 +1,100 @@
 <div class="top_left">
   <div class="left_side_links">
     <% if user_signed_in? %>
-      <div class="left_side_link"><%= link_to '  ホーム', root_path, class: 'fas fa-home my-big text-left' %></div>
+      <%= link_to root_path do %>
       <div class="left_side_link">
-        <%= link_to user_path(current_user) do %>
-          <%= attachment_image_tag current_user, :image, fallback: "no_image.jpg", size: "50x50" %>
-          マイページ
-        <% end %>
+        <div class="left_side_icon_outer ">
+          <i class="fas fa-home left_side_icon"></i>
+        </div>
+        <div class="left_side_text">
+          ホーム
+        </div>
       </div>
-      <div class="left_side_link"><%= link_to '  投稿する', new_post_ramen_path, class: 'fas fa-edit my-big text-left' %></div>
-      <div class="left_side_link"><%= link_to ' ログアウト', destroy_user_session_path, method: :delete,class: 'fas fa-sign-out-alt my-big text-let' %></div>
+      <% end %>
+      <%= link_to new_post_ramen_path do %>
+      <div class="left_side_link">
+        <div class="left_side_icon_outer ">
+          <i class="fas fa-edit left_side_icon"></i>
+        </div>
+        <div class="left_side_text">
+          投稿する
+        </div>
+      </div>
+      <% end %>
+      <%= link_to user_path(current_user) do %>
+      <div class="left_side_link">
+        <div class="left_side_icon_outer ">
+          <i class="left_side_icon"><%= attachment_image_tag current_user, :image, fallback: "no_image.jpg", size: "43x43", class: "left_side_user_icon" %></i>
+        </div>
+        <div class="left_side_text">
+          マイページ
+        </div>
+      </div>
+      <% end %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+      <div class="left_side_link">
+        <div class="left_side_icon_outer ">
+          <i class="fas fa-sign-out-alt left_side_icon"></i>
+        </div>
+        <div class="left_side_text">
+          ログアウト
+        </div>
+      </div>
+      <% end %>
     <% else %>
-      <div class="left_side_link"><%= link_to '  ', root_path, class: 'fas fa-home text-left' %></div>
-      <div class="left_side_link"><%= link_to '  ホーム', root_path, class: 'fas fa-home  text-left' %></div>
-      <div class="left_side_link"><%= link_to ' 会員登録', new_user_registration_path,class: 'fas fa-user-plus nav-link my-big text-light' %></div>
-      <div class="left_side_link"><%= link_to ' ログイン', new_user_session_path ,class: 'fas fa-sign-in-alt nav-link my-big text-light'%></div>
+      <%= link_to root_path do %>
+      <div class="left_side_link">
+        <div class="left_side_icon_outer ">
+          <i class="fas fa-home left_side_icon"></i>
+        </div>
+        <div class="left_side_text">
+          ホーム
+        </div>
+      </div>
+      <% end %>
+      <%= link_to new_user_registration_path do %>
+      <div class="left_side_link">
+        <div class="left_side_icon_outer ">
+          <i class="fas fa-user-plus left_side_icon"></i>
+        </div>
+        <div class="left_side_text">
+          会員登録
+        </div>
+      </div>
+      <% end %>
+      <%= link_to new_user_session_path do %>
+      <div class="left_side_link">
+        <div class="left_side_icon_outer ">
+          <i class="fas fa-sign-in-alt left_side_icon"></i>
+        </div>
+        <div class="left_side_text">
+          ログイン
+        </div>
+      </div>
+      <% end %>
     <% end %>
   </div>
   <div class="left_side_search_box">
     <div class="left_side_search_content">
       <div class="left_side_search_form">
         <%= search_form_for q do |f| %>
-        キーワード検索:<br>
-        <%= f.search_field :title_or_content_or_shop_name_cont %><br>
+        キーワード検索:
+        <%= f.search_field :content_or_shop_name_cont, class: "col" %><br>
         <!--評価<%#= f.number_field :review_gteq %>以上〜<br>-->
-        <%= f.submit "検索" %>
+        <%= f.submit "検索", class: 'btn btn-secondary form-control'%>
         <% end %>
       </div>
       <div class="left_side_search_check_box">
         <%= form_with model: tags, url: post_ramens_path, method: 'GET', local: true do |f| %>
           <% tags.each do |tag| %>
+          <div class="search_text">
             <%= f.check_box :name, { multiple: true }, "#{tag.name}", nil %>
             <%= f.label " #{tag.name}", class: "label label-default" %>
-          <% end %><br>
+          </div>
+          <% end %>
           <%= f.radio_button :search_method, "AND", class: "custom-radio", checked: true %>AND
           <%= f.radio_button :search_method, "OR", class: "custom-radio" %>OR<br>
-          <%= f.submit "検索" %>
+          <%= f.submit "検索", class: 'btn btn-secondary form-control' %>
         <% end %>
       </div>
     </div>

@@ -16,6 +16,13 @@ class PostRamensController < ApplicationController
     else
       @post_ramens = PostRamen.all
     end
+
+    @q = PostRamen.ransack(params[:q])  #rightサイドの変数↓↓
+    @tags = ActsAsTaggableOn::Tag.all
+    @post_ramen_all_ranks = PostRamen.create_all_ranks #いいね全期間ランキング
+    @post_ramen_week_ranks = PostRamen.create_week_ranks #いいね週間ランキング
+    @post_ramen_year_ranks = PostRamen.create_year_ranks
+    @most_used_tags = ActsAsTaggableOn::Tag.most_used(10)
   end
 
   def new
@@ -56,9 +63,8 @@ class PostRamensController < ApplicationController
   end
 
   def destroy
-    user = current_user
     PostRamen.find(params[:id]).destroy
-    redirect_to user_path(user)
+    redirect_to root_path, notice: "投稿を削除しました。"
   end
 
   def search
