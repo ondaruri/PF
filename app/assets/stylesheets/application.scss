@@ -14,6 +14,12 @@
  *= require_self
  */
 @import "bootstrap";
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    background-color: transparent;
+}
 // ------------------共通---------------------------------
 
 
@@ -33,6 +39,8 @@
 .container-fluid {
   background-color: white;
 }
+
+
 // ------------------------------left---------------------------------
 
 .left_side_bar {
@@ -40,6 +48,10 @@
  padding-left: 50px;
  background-color: white;
   }
+
+.left_side_bar a {
+  text-decoration: none;
+}
 
 .top_left {
   height: 100%;
@@ -64,11 +76,9 @@
     color: black;
 }
 
-a {
-    color: #007bff;
-    text-decoration: none;
-    background-color: transparent;
-  }
+// .left_side_link a {
+//   text-decoration: none;
+// }
 
 .left_side_icon_outer {
     width: 40px;
@@ -85,6 +95,10 @@ a {
     font-weight: bold;
     line-height: 35px;
 }
+
+// .left_side_text a {
+//   text-decoration: none;
+// }
 
 .left_side_search_box {
     padding-top: 10px;
@@ -151,6 +165,9 @@ a {
     color: black;
 }
 
+.timeline_footer_box a {
+  text-decoration: none;
+}
 // -----------------右サイド------------------------
 
 
@@ -272,6 +289,11 @@ a {
 .tag_rank_title {
   line-height: 3;
   text-align: -webkit-center;
+}
+
+.tag_rank_title a {
+  text-decoration: none;
+  color: black;
 }
 
 .rank {

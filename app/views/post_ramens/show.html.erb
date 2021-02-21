@@ -59,7 +59,10 @@
         <div class="timeline_footer">
           <div class="col-3 timeline_footer_box">
             <div class="comment_count">
-              <%= @post_ramen.post_comments.count %>　件
+              <a href="#comment_jamp">
+                <i class="far fa-comment" style="color: black;"></i>
+                <span style="color:black;"><%= @post_ramen.post_comments.count %></span>
+              </a>
             </div>
           </div>
           <div class="col-3 timeline_footer_box">
@@ -69,21 +72,24 @@
           </div>
           <div class="col-3 timeline_footer_box">
             <%= link_to edit_post_ramen_path(@post_ramen) do %>
-              <i class="fas fa-edit"></i>
+              <i class="fas fa-edit" style="color: black;"></i>
             <% end %>
           </div>
           <div class="col-3 timeline_footer_box">
             <%= link_to post_ramen_path(@post_ramen), method: :delete do %>
-              <i class="far fa-trash-alt"></i>
+              <i class="far fa-trash-alt" style="color: black;"></i>
             <% end %>
           </div>
         </div>
         <% else %>
         <div class="timeline_footer">
             <div class="col-4 timeline_footer_box">
-              <div class="comment_count">
-                <%= @post_ramen.post_comments.count %>　件
-              </div>
+              <a href="#comment_jamp">
+                <div class="comment_count">
+                  <i class="far fa-comment" style="color: black;"></i>
+                  <span style="color:black;"><%= @post_ramen.post_comments.count %></span>
+                </div>
+              </a>
             </div>
             <div class="col-4 timeline_footer_box">
               <div class="like_button_area-<%= @post_ramen.id %>">
@@ -91,7 +97,9 @@
               </div>
             </div>
             <div class="col-4 timeline_footer_box">
-              <%= link_to "HOME", root_path %>
+              <%= link_to root_path do %>
+              <i class="fas fa-home" style="color: black;"></i>
+              <% end %>
             </div>
         </div>
         <% end %>

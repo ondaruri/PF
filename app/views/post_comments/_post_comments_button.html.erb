@@ -1,4 +1,4 @@
-<div class="comment_new">
+<div class="comment_new" id="comment_jamp">
   <div class="comment_new_text">
   <%= form_with(model:[post_ramen, post_comment], method: :post, remote: true) do |f| %>
     <%= f.text_area :content, placeholder: "コメントをここに", class: "form-control" %>
