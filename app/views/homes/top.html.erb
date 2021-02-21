@@ -57,35 +57,35 @@
           </div>
         </div>
         <% if post_ramen.user == current_user %>
-        <div class="timeline_footer row">
-          <div class="col-3 timeline_footer_box">
-            <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp') do %>
-            <i class="far fa-comment" style="color: black;"></i>
-            <span style="color:black;"><%= post_ramen.post_comments.count %></span>
-            <% end %>
-          </div>
-          <div class="col-3 timeline_footer_box">
-            <div class="like_button_area-<%= post_ramen.id %>">
-              <%= render 'likes/like_button', post_ramen: post_ramen %>
+        <div class="timeline_footer">
+            <div class="col-3 timeline_footer_box">
+                <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
+                <i class="far fa-comment" style="color: black;"></i>
+                <span style="color:black;"><%= post_ramen.post_comments.count %></span>
+                <% end %>
             </div>
-          </div>
-          <div class="col-3 timeline_footer_box">
-            <%= link_to edit_post_ramen_path(post_ramen) do %>
-              <i class="fas fa-edit" style="color: black;"></i>
-            <% end %>
-          </div>
-          <div class="col-3 timeline_footer_box">
-            <%= link_to post_ramen_path(post_ramen), method: :delete do %>
-              <i class="far fa-trash-alt" style="color: black;"></i>
-            <% end %>
-          </div>
+            <div class="col-3 timeline_footer_box">
+              <div class="like_button_area-<%= post_ramen.id %>">
+                <%= render 'likes/like_button', post_ramen: post_ramen %>
+              </div>
+            </div>
+            <div class="col-3 timeline_footer_box">
+                <%= link_to edit_post_ramen_path(post_ramen), class: 'btn btn-icon' do %>
+                  <i class="fas fa-edit" style="color: black;"></i>
+                <% end %>
+            </div>
+            <div class="col-3 timeline_footer_box">
+                <%= link_to post_ramen_path(post_ramen), class: 'btn btn-icon', method: :delete do %>
+                  <i class="far fa-trash-alt" style="color: black;"></i>
+                <% end %>
+            </div>
         </div> <!-- end time_line_footer -->
         <% else %>
-        <div class="timeline_footer row">
+        <div class="timeline_footer">
           <div class="col-4 timeline_footer_box">
-            <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp') do %>
-            <i class="far fa-comment" style="color: black;"></i>
-            <span style="color:black;"><%= post_ramen.post_comments.count %></span>
+            <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
+              <i class="far fa-comment" style="color: black;"></i>
+              <span style="color:black;"><%= post_ramen.post_comments.count %></span>
             <% end %>
           </div>
           <div class="col-4 timeline_footer_box">
@@ -94,9 +94,9 @@
             </div>
           </div>
           <div class="col-4 timeline_footer_box">
-            <%= link_to root_path do %>
-              <i class="fas fa-home" style="color: black;" ></i>
-            <% end %>
+              <%= link_to root_path, class: 'btn btn-icon' do %>
+                <i class="fas fa-home" style="color: black;" ></i>
+              <% end %>
           </div>
         </div> <!-- else end time_line_footer -->
         <% end %> <!--- else end ----->
@@ -104,7 +104,7 @@
       <% end %> <!-- each文 end -------->
     </div> <!-- end post_rames_main -->
     <div class="col-4 right-side-bar">
-      <%= render 'layouts/right_side_bar', post_ramen_all_ranks: @post_ramen_all_ranks, most_used_tags: @most_used_tags, post_ramen_week_ranks: @post_ramen_week_ranks, post_ramen_year_ranks: @post_ramen_year_ranks, most_used_tags_tab: @most_used_tags_tab %>
+      <%= render 'layouts/right_side_bar', post_ramen_all_ranks: @post_ramen_all_ranks, most_used_tags: @most_used_tags, post_ramen_week_ranks: @post_ramen_week_ranks, post_ramen_year_ranks: @post_ramen_year_ranks, most_used_tags_tab: @most_used_tags_tab, tonkothu_ranks: @tonkothu_ranks, shio_ranks: @shio_ranks %>
     </div>
   </div> <!-- end row -->
 </div>

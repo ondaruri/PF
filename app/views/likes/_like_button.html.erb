@@ -1,17 +1,13 @@
 <div class="like_button">
   <% if post_ramen.liked_by?(current_user) %>
-    <p>
-      <%= link_to post_ramen_like_path(post_ramen, post_ramen.id), method: :delete, remote: true do %>
+      <%= link_to post_ramen_like_path(post_ramen, post_ramen.id), class: 'btn btn-icon', method: :delete, remote: true do %>
         <i class="fas fa-thumbs-up" style="color: black;"></i>
         <span style="color:black;"><%= post_ramen.likes.count %></span>
-    </p>
     <% end %>
   <% else %>
-    <p>
-      <%= link_to post_ramen_likes_path(post_ramen), method: :post, remote: true do %>
+      <%= link_to post_ramen_likes_path(post_ramen), class: 'btn btn-icon', method: :post, remote: true do %>
         <i class="far fa-thumbs-up" style="color: black;"></i>
-        <span style="color:black;"><%= post_ramen.likes.count %></span
+        <span style="color:black;"><%= post_ramen.likes.count %></span>
   <% end %>
-    </p>
   <% end %>
 </div>

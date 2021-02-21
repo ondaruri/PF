@@ -100,7 +100,7 @@
         <% if post_ramen.user == current_user %>
         <div class="timeline_footer">
             <div class="col-3 timeline_footer_box">
-              <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp') do %>
+              <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
               <i class="far fa-comment" style="color: black;"></i>
               <span style="color:black;"><%= post_ramen.post_comments.count %></span>
               <% end %>
@@ -111,12 +111,12 @@
               </div>
             </div>
             <div class="col-3 timeline_footer_box">
-              <%= link_to edit_post_ramen_path(post_ramen) do %>
+              <%= link_to edit_post_ramen_path(post_ramen), class: 'btn btn-icon' do %>
                 <i class="fas fa-edit" style="color: black;"></i>
               <% end %>
             </div>
             <div class="col-3 timeline_footer_box">
-              <%= link_to post_ramen_path(post_ramen), method: :delete do %>
+              <%= link_to post_ramen_path(post_ramen), class: 'btn btn-icon',  method: :delete do %>
                 <i class="far fa-trash-alt" style="color: black;"></i>
               <% end %>
             </div>
@@ -124,7 +124,7 @@
         <% else %>
         <div class="timeline_footer">
             <div class="col-4 timeline_footer_box">
-              <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp') do %>
+              <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
               <i class="far fa-comment" style="color: black;"></i>
               <span style="color:black;"><%= post_ramen.post_comments.count %></span>
               <% end %>
@@ -135,7 +135,7 @@
               </div>
             </div>
             <div class="col-4 timeline_footer_box">
-              <%= link_to root_path do %>
+              <%= link_to root_path, class: 'btn btn-icon' do %>
               <i class="fas fa-home" style="color: black;"></i>
               <% end %>
             </div>

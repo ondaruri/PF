@@ -14,12 +14,6 @@
  *= require_self
  */
 @import "bootstrap";
-
-a {
-    text-decoration: none;
-    color: #007bff;
-    background-color: transparent;
-}
 // ------------------共通---------------------------------
 
 
@@ -57,8 +51,8 @@ a {
   height: 100%;
   background-color: white;
   border-left: 1px solid #cccccc;
-    border-right: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
 }
 
 .main {
@@ -74,8 +68,22 @@ a {
     padding-left: 20px;
     display: flex;
     color: black;
+  }
+
+.left_side_link:hover {
+  background: whitesmoke;
 }
 
+.timeline_box {
+    border-bottom: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    font-size: 14px;
+    background-color: white;
+  }
+
+.timeline_box:hover {
+  background: whitesmoke;
+}
 // .left_side_link a {
 //   text-decoration: none;
 // }
@@ -163,6 +171,17 @@ a {
 
 .timeline_footer_box {
     color: black;
+    height: 100%;
+    flex: 1;
+    padding-right: 0;
+    padding-left: 0;
+    // text-align: center;
+    // margin-left: 30px;
+    // margin-right: 30px;
+}
+
+.timeline_footer_box:hover {
+  background: #D1D0CE;
 }
 
 .timeline_footer_box a {
@@ -298,4 +317,11 @@ a {
 
 .rank {
   line-height: 3;
+}
+
+.btn-icon {
+  width: 100%;
+  &:focus {
+    box-shadow: none;
+  }
 }
