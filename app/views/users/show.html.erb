@@ -16,21 +16,22 @@
             <%= @user.introduction %>
           </div>
           <div class="profile_data">
-            <div class="profile_data_box">
-              <div class="profile_data_content">
+              <%= link_to user_path(@user),  class: 'btn btn-icon' do %>
+              <div class="profile_data_content col">
                 投稿<br><%= @user.post_ramens.count %>
               </div>
-              <%= link_to follower_user_path(@user) do %>
-              <div class="profile_data_content">
+              <% end %>
+              <%= link_to follower_user_path(@user), class: 'btn btn-icon' do %>
+              <div class="profile_data_content col">
                   フォロワー<br><%= @user.follower_user.count %>
               </div>
               <% end %>
-              <%= link_to follows_user_path(@user) do %>
-              <div class="profile_data_content">
+              <%= link_to follows_user_path(@user), class: 'btn btn-icon' do %>
+              <div class="profile_data_content col">
                 フォロー<br><%= @user.following_user.count %>
               </div>
               <% end %>
-            </div>
+
           </div>
             <% if @user == current_user %>
             <div class="profile_button">
