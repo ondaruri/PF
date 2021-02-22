@@ -21,11 +21,7 @@
                 投稿<br><%= @user.post_ramens.count %>
               </div>
               <% end %>
-              <%= link_to follower_user_path(@user), class: 'btn btn-icon' do %>
-              <div class="profile_data_content col">
-                  フォロワー<br><%= @user.follower_user.count %>
-              </div>
-              <% end %>
+                <%= render 'relationships/followed_count', user: @user %>
               <%= link_to follows_user_path(@user), class: 'btn btn-icon' do %>
               <div class="profile_data_content col">
                 フォロー<br><%= @user.following_user.count %>
@@ -117,7 +113,7 @@
               <% end %>
             </div>
             <div class="col-3 timeline_footer_box">
-              <%= link_to post_ramen_path(post_ramen), class: 'btn btn-icon',  method: :delete do %>
+              <%= link_to post_ramen_path(post_ramen), data: {confirm: "削除しますか？"}, class: 'btn btn-icon',  method: :delete do %>
                 <i class="far fa-trash-alt" style="color: black;"></i>
               <% end %>
             </div>

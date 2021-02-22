@@ -75,7 +75,7 @@
                 <% end %>
             </div>
             <div class="col-3 timeline_footer_box">
-                <%= link_to post_ramen_path(post_ramen), class: 'btn btn-icon', method: :delete do %>
+                <%= link_to post_ramen_path(post_ramen), data: {confirm: "削除しますか？"}, class: 'btn btn-icon', method: :delete do %>
                   <i class="far fa-trash-alt" style="color: black;"></i>
                 <% end %>
             </div>
@@ -102,9 +102,10 @@
         <% end %> <!--- else end ----->
       </div> <!-- end time_line_box -->
       <% end %> <!-- each文 end -------->
+      <%= paginate @post_ramens %>
     </div> <!-- end post_rames_main -->
     <div class="col-4 right-side-bar">
-      <%= render 'layouts/right_side_bar', post_ramen_all_ranks: @post_ramen_all_ranks, most_used_tags: @most_used_tags, post_ramen_week_ranks: @post_ramen_week_ranks, post_ramen_year_ranks: @post_ramen_year_ranks, most_used_tags_tab: @most_used_tags_tab, tonkothu_ranks: @tonkothu_ranks, shio_ranks: @shio_ranks %>
+      <%= render 'layouts/right_side_bar', post_ramen_all_ranks: @post_ramen_all_ranks, most_used_tags: @most_used_tags, post_ramen_month_ranks: @post_ramen_month_ranks, post_ramen_year_ranks: @post_ramen_year_ranks, most_used_tags_tab: @most_used_tags_tab, tonkothu_ranks: @tonkothu_ranks, shio_ranks: @shio_ranks %>
     </div>
   </div> <!-- end row -->
 </div>

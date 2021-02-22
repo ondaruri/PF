@@ -16,7 +16,10 @@
 @import "bootstrap";
 // ------------------共通---------------------------------
 
-
+.sidebar_fixed {
+  position: sticky;
+  height: 100%;
+}
 
 .icon-user .attachment {
     border-radius: 50%;
@@ -34,6 +37,18 @@
   background-color: white;
 }
 
+// .notifications {
+//   color: $white;
+//   text-align: center;
+
+.notice {
+    background-color: white;
+  }
+
+// .alert {
+//     background-color: alert-orange;
+//   }
+// }
 
 // ------------------------------left---------------------------------
 
@@ -329,4 +344,9 @@
   &:focus {
     box-shadow: none;
   }
+}
+
+.actions {
+    display: block;
+    text-align: right;
 }

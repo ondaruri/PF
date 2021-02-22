@@ -4,7 +4,7 @@
   </div>
   <div class="tab-list">
     <div class="tab tab-active">全期間</div>
-    <div class="tab">週間</div>
+    <div class="tab">月間</div>
     <div class="tab">年間</div>
   </div>
   <div class="tabbox-contents"> <!------------全期間--------------->
@@ -33,9 +33,9 @@
       <% end %>
     </div>
   </div> <!-----------------全期間---------------->
-  <div class="tabbox-contents"> <!--------------週間---------->
+  <div class="tabbox-contents"> <!--------------月間---------->
     <div class="tabbox ">
-      <% post_ramen_week_ranks.each do |post_ramen| %>
+      <% post_ramen_month_ranks.each do |post_ramen| %>
       <div class="rank_box row">
         <div class="col-4">
           <%= link_to post_ramen_path(post_ramen) do %>
@@ -58,7 +58,7 @@
       </div>
       <% end %>
     </div>
-  </div> <!---------------週間------------>
+  </div> <!---------------月間------------>
   <div class="tabbox-contents"> <!---------------年間--------------->
     <div class="tabbox">
       <% post_ramen_year_ranks.each do |post_ramen| %>

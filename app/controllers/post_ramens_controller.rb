@@ -35,7 +35,7 @@ class PostRamensController < ApplicationController
     @post_ramen.user_id = current_user.id
     if
       @post_ramen.save!
-      redirect_to post_ramen_path(@post_ramen)
+      redirect_to post_ramen_path(@post_ramen), notice: '新規投稿しました。'
     else
       redirect_to root_path
     end
