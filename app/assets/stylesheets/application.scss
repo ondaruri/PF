@@ -16,7 +16,11 @@
 @import "bootstrap";
 // ------------------共通---------------------------------
 
-
+.sidebar_fixed {
+  position: sticky;
+  height: 1500px;
+  top: 10px;
+}
 
 .icon-user .attachment {
     border-radius: 50%;
@@ -33,6 +37,20 @@
 .container-fluid {
   background-color: white;
 }
+
+// .notifications {
+//   color: $white;
+//   text-align: center;
+
+.k-notice {
+    background-color: #CCFFFF;
+  }
+
+.k-alert {
+    background-color: #f08080;
+  }
+// }
+
 // ------------------------------left---------------------------------
 
 .left_side_bar {
@@ -41,12 +59,16 @@
  background-color: white;
   }
 
+.left_side_bar a {
+  text-decoration: none;
+}
+
 .top_left {
   height: 100%;
   background-color: white;
   border-left: 1px solid #cccccc;
-    border-right: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
 }
 
 .main {
@@ -62,13 +84,25 @@
     padding-left: 20px;
     display: flex;
     color: black;
+  }
+
+.left_side_link:hover {
+  background: whitesmoke;
 }
 
-a {
-    color: #007bff;
-    text-decoration: none;
-    background-color: transparent;
+.timeline_box {
+    border-bottom: 1px solid #cccccc;
+    border-right: 1px solid #cccccc;
+    font-size: 14px;
+    background-color: white;
   }
+
+.timeline_box:hover {
+  background: whitesmoke;
+}
+// .left_side_link a {
+//   text-decoration: none;
+// }
 
 .left_side_icon_outer {
     width: 40px;
@@ -85,6 +119,10 @@ a {
     font-weight: bold;
     line-height: 35px;
 }
+
+// .left_side_text a {
+//   text-decoration: none;
+// }
 
 .left_side_search_box {
     padding-top: 10px;
@@ -149,8 +187,23 @@ a {
 
 .timeline_footer_box {
     color: black;
+    height: 100%;
+    flex: 1;
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: 8px;
+    // text-align: center;
+    // margin-left: 30px;
+    // margin-right: 30px;
 }
 
+.timeline_footer_box:hover {
+  background: #D1D0CE;
+}
+
+.timeline_footer_box a {
+  text-decoration: none;
+}
 // -----------------右サイド------------------------
 
 
@@ -263,6 +316,10 @@ a {
 
 }
 
+.rank_box:hover {
+  background: whitesmoke;
+}
+
 .rank_count {
   display: flex;
   align-items: center;
@@ -274,6 +331,23 @@ a {
   text-align: -webkit-center;
 }
 
+.tag_rank_title a {
+  text-decoration: none;
+  color: black;
+}
+
 .rank {
   line-height: 3;
+}
+
+.btn-icon {
+  width: 100%;
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.actions {
+    display: block;
+    text-align: right;
 }

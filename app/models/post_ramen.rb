@@ -19,9 +19,9 @@ class PostRamen < ApplicationRecord
     PostRamen.find(Like.group(:post_ramen_id).order('count(post_ramen_id) desc').limit(3).pluck(:post_ramen_id))
   end
 
-  def self.create_week_ranks
+  def self.create_month_ranks
     now = Time.current
-    PostRamen.joins(:likes).where(likes: { created_at: now.beginning_of_week..now.end_of_week}).group(:id).order("count(post_ramen_id) desc").limit(3)
+    PostRamen.joins(:likes).where(likes: { created_at: now.beginning_of_month..now.end_of_month}).group(:id).order("count(post_ramen_id) desc").limit(3)
   end
 
   def self.create_year_ranks

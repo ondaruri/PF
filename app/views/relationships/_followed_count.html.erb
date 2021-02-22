@@ -1,3 +1,5 @@
-<%= link_to follower_user_path(user) do %>
-  フォロワー<br><%= user.follower_user.count %>
+<%= link_to follower_user_path(user), class: 'btn btn-icon' do %>
+  <div class="profile_data_content followed_count col" >
+    フォロワー<br><%= user.follower_user.count %>
+  </div>
 <% end %>
