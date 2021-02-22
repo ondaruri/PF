@@ -5,7 +5,7 @@ class HomesController < ApplicationController
     @post_ramens = PostRamen.all.order("created_at DESC").page(params[:page]).per(20)
     # -----------------right--------------------------------
     @post_ramen_all_ranks = PostRamen.create_all_ranks #いいね全期間ランキング
-    @post_ramen_month_ranks = PostRamen.create_month_ranks #いいね週間ランキング
+    @post_ramen_month_ranks = PostRamen.create_month_ranks #いいね月間ランキング
     @post_ramen_year_ranks = PostRamen.create_year_ranks
     now = Time.current
     @most_used_tags = ActsAsTaggableOn::Tag.most_used(10).where(created_at: now.beginning_of_year..now.end_of_year) #タグ投稿数ランキング

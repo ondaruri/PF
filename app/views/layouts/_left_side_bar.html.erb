@@ -81,8 +81,9 @@
           <%= search_form_for q do |f| %>
           キーワード検索:
           <%= f.search_field :content_or_shop_name_cont, class: "col" %><br>
-          評価検索：
-          
+          評価検索：<br>
+          <%= f.radio_button :review_gteq, '3.5' %>3.5以上<br>
+          <%= f.radio_button :review_gteq, '4.0' %>4.0以上<br>
           <!--評価<%#= f.number_field :review_gteq %>以上〜<br>-->
           <%= f.submit "検索", class: 'btn btn-secondary form-control'%>
           <% end %>
