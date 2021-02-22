@@ -67,7 +67,7 @@ class PostRamensController < ApplicationController
 
   def destroy
     PostRamen.find(params[:id]).destroy
-    redirect_to root_path, notice: "投稿を削除しました。"
+    redirect_to root_path, alert: "投稿を削除しました。"
   end
 
   def search

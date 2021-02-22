@@ -18,7 +18,8 @@
 
 .sidebar_fixed {
   position: sticky;
-  height: 100%;
+  height: 1500px;
+  top: 10px;
 }
 
 .icon-user .attachment {
@@ -41,13 +42,13 @@
 //   color: $white;
 //   text-align: center;
 
-.notice {
-    background-color: white;
+.k-notice {
+    background-color: #CCFFFF;
   }
 
-// .alert {
-//     background-color: alert-orange;
-//   }
+.k-alert {
+    background-color: #f08080;
+  }
 // }
 
 // ------------------------------left---------------------------------
