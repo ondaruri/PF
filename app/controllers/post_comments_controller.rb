@@ -8,9 +8,6 @@ class PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.post_ramen_id = @post_ramen.id
     comment.save
-    # redirect_to post_ramen_path(post_ramen)
-    # redirect_to root_path
-
   end
 
   def show

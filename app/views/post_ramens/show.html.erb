@@ -4,7 +4,7 @@
       <%= render 'layouts/left_side_bar', q: @q, tags: @tags, post_ramen: @post_ramen %>
     </div>       <!--#------------------メイン--------------------------->
     <div class="col-5 post_ramen_main">
-      <div class="timeline_box">
+      <div class="timeline_box_postramen">
         <div class="timeline_header">
           <div class="row">
             <div class="col-2 icon-user">
@@ -12,7 +12,7 @@
               <%= attachment_image_tag @post_ramen.user, :image, fallback: "no_image.jpg", size: "50x50" %>
               <% end %>
             </div>
-            <div class="col-3 user-name">
+            <div class="col-3 user_name">
               <%= @post_ramen.user.name %>
             </div>
             <div class="review col-4">
@@ -58,7 +58,10 @@
         <% if @post_ramen.user == current_user %>
         <div class="timeline_footer">
           <div class="col-3 timeline_footer_box">
-            <%= @post_ramen.post_comments.count %>　件
+            <%= link_to post_ramen_path(@post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
+              <i class="far fa-comment" style="color: black;"></i>
+              <span style="color:black;"><%= @post_ramen.post_comments.count %></span>
+              <% end %>
           </div>
           <div class="col-3 timeline_footer_box">
             <div class="like_button_area-<%= @post_ramen.id %>">
@@ -66,16 +69,25 @@
             </div>
           </div>
           <div class="col-3 timeline_footer_box">
-            <%= link_to "編集", edit_post_ramen_path(@post_ramen) %>
+            <%= link_to edit_post_ramen_path(@post_ramen), class: 'btn btn-icon' do %>
+              <i class="fas fa-edit" style="color: black;"></i>
+            <% end %>
           </div>
           <div class="col-3 timeline_footer_box">
-            <%= link_to "削除", post_ramen_path(@post_ramen), method: :delete %>
+            <%= link_to post_ramen_path(@post_ramen), data: {confirm: "削除しますか？"}, class: 'btn btn-icon',  method: :delete do %>
+              <i class="far fa-trash-alt" style="color: black;"></i>
+            <% end %>
           </div>
         </div>
         <% else %>
         <div class="timeline_footer">
             <div class="col-4 timeline_footer_box">
-              <%= @post_ramen.post_comments.count %>　件
+              <a href="#comment_jamp">
+                <div class="comment_count">
+                  <i class="far fa-comment" style="color: black;"></i>
+                  <span style="color:black;"><%= @post_ramen.post_comments.count %></span>
+                </div>
+              </a>
             </div>
             <div class="col-4 timeline_footer_box">
               <div class="like_button_area-<%= @post_ramen.id %>">
@@ -83,7 +95,9 @@
               </div>
             </div>
             <div class="col-4 timeline_footer_box">
-              <%= link_to "HOME", root_path %>
+              <%= link_to root_path, class: 'btn btn-icon' do %>
+              <i class="fas fa-home" style="color: black;"></i>
+              <% end %>
             </div>
         </div>
         <% end %>
@@ -97,6 +111,7 @@
     </div>
     <div class="col-4 right_side_bar">  <!-------------------------right_side-------------------------------->
       <div class="right_side_map">
+        住所: <%= @post_ramen.address %>
         <div id="map"></div>
       </div>
     </div>

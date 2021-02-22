@@ -1,20 +1,176 @@
-<div class="container">
-  <div class="row">
-  <%= search_form_for q do |f| %>
-    キーワード検索<%= f.search_field :title_or_content_or_shop_name_cont %><br>
-    評価<%= f.number_field :review_gteq %>以上〜<br>
-    <%= f.submit "検索" %>
-  <% end %>
+<div class="container_right"> <!----------------いいねランキング----------->
+  <div class="tab_list_name">
+   いいね獲得ランキング
   </div>
-  <div class="row">
-  <%= form_with model: tags, url: post_ramens_path, method: 'GET', local: true do |f| %>
-    <% tags.each do |tag| %>
-      <%= f.check_box :name, { multiple: true }, "#{tag.name}", nil %>
-      <%= f.label " #{tag.name}", class: "label label-default" %>
-      <% end %><
-    <%= f.radio_button :search_method, "AND", class: "custom-radio", checked: true %>AND
-    <%= f.radio_button :search_method, "OR", class: "custom-radio" %>OR
-    <%= f.submit "検索" %>
-  <% end %>
+  <div class="tab-list">
+    <div class="tab tab-active">全期間</div>
+    <div class="tab">月間</div>
+    <div class="tab">年間</div>
   </div>
-</div>
+  <div class="tabbox-contents"> <!------------全期間--------------->
+    <div class="tabbox box-show">
+      <% post_ramen_all_ranks.each do |post_ramen| %>
+      <div class="rank_box row">
+        <div class="col-4">
+          <%= link_to post_ramen_path(post_ramen) do %>
+            <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "10x10", class: "right_side_image" %>
+            <% end %>
+        </div>
+        <div class="col-6 rank_item_content">
+          <div class="timeline_title">
+            店名：  <%= post_ramen.address %>
+          </div>
+          <div class="timeline_content_content">
+            <%= post_ramen.content %>
+          </div>
+        </div>
+        <div class="col-2 rank_count">
+          <div class="rank_count_count">
+            <%= post_ramen.likes.count %><br><div style="font-size: 9px;"> いいね</div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div> <!-----------------全期間---------------->
+  <div class="tabbox-contents"> <!--------------月間---------->
+    <div class="tabbox ">
+      <% post_ramen_month_ranks.each do |post_ramen| %>
+      <div class="rank_box row">
+        <div class="col-4">
+          <%= link_to post_ramen_path(post_ramen) do %>
+            <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "10x10", class: "right_side_image" %>
+          <% end %>
+        </div>
+        <div class="col-6 rank_item_content">
+          <div class="timeline_title">
+            店名：  <%= post_ramen.address %>
+          </div>
+          <div class="timeline_content_content">
+            <%= post_ramen.content %>
+          </div>
+        </div>
+        <div class="col-2 rank_count">
+          <div class="rank_count_count">
+            <%= post_ramen.likes.count %><br><div style="font-size: 9px;"> いいね</div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div> <!---------------月間------------>
+  <div class="tabbox-contents"> <!---------------年間--------------->
+    <div class="tabbox">
+      <% post_ramen_year_ranks.each do |post_ramen| %>
+      <div class="rank_box row">
+        <div class="col-4">
+          <%= link_to post_ramen_path(post_ramen) do %>
+            <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "10x10", class: "right_side_image" %>
+          <% end %>
+        </div>
+        <div class="col-6 rank_item_content">
+          <div class="timeline_title">
+            店名：  <%= post_ramen.address %>
+          </div>
+          <div class="timeline_content_content">
+            <%= post_ramen.content %>
+          </div>
+        </div>
+        <div class="col-2 rank_count">
+          <div class="rank_count_count">
+            <%= post_ramen.likes.count %><br><div style="font-size: 9px;"> いいね</div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div> <!------------年間------------------------>
+  </div> <!----------年間---------->
+</div> <!----------いいねランキング----------->
+
+
+
+
+
+<div class="container_right"> <!--------------タグランキング------------------>
+  <div class="tab_list_name">
+   タグ別ランキング
+  </div>
+  <div class="tab-list">
+    <div class="tab2 tab2-active">タグ付け数</div>
+    <div class="tab2">とんこつ</div>
+    <div class="tab2">しお</div>
+  </div>
+  <div class="tabbox-contents"> <!------------タグ付け数--------------->
+    <div class="tabbox2 box2-show">
+      <% most_used_tags.each.with_index(1) do |tag, i| %>
+      <div class="rank_box row">
+        <div class="col-2 rank">
+          <%= i %> 位
+        </div>
+        <div class="col-8 rank_item_content">
+          <div class="tag_rank_title">
+            <%= link_to tag.name, post_ramens_path(tag.name) %>
+          </div>
+        </div>
+        <div class="col-2 rank_count">
+          <div class="rank_count_count">
+            <%= tag.taggings_count %><br><div style="font-size: 9px;"> 投稿</div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div> <!-----------------タグ付け数---------------->
+  <div class="tabbox-contents"> <!------とんこつ----------------->
+    <div class="tabbox2">
+      <% tonkothu_ranks.each do |post_ramen| %>
+      <div class="rank_box row">
+        <div class="col-4">
+          <%= link_to post_ramen_path(post_ramen) do %>
+            <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "10x10", class: "right_side_image" %>
+          <% end %>
+        </div>
+        <div class="col-6 rank_item_content">
+          <div class="timeline_title">
+            店名：  <%= post_ramen.address %>
+          </div>
+          <div class="timeline_content_content">
+            <%= post_ramen.content %>
+          </div>
+        </div>
+        <div class="col-2 rank_count">
+          <div class="rank_count_count">
+            <%= post_ramen.likes.count %><br><div style="font-size: 9px;"> いいね</div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div> <!---------------とんこつ------------>
+  <div class="tabbox-contents"> <!---------------しお--------------->
+    <div class="tabbox2">
+      <% shio_ranks.each do |post_ramen| %>
+      <div class="rank_box row">
+        <div class="col-4">
+          <%= link_to post_ramen_path(post_ramen) do %>
+            <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "10x10", class: "right_side_image" %>
+          <% end %>
+        </div>
+        <div class="col-6 rank_item_content">
+          <div class="timeline_title">
+            店名：  <%= post_ramen.address %>
+          </div>
+          <div class="timeline_content_content">
+            <%= post_ramen.content %>
+          </div>
+        </div>
+        <div class="col-2 rank_count">
+          <div class="rank_count_count">
+            <%= post_ramen.likes.count %><br><div style="font-size: 9px;"> いいね</div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div> <!----------しお---------->
+</div> <!------------ランキング-------------->

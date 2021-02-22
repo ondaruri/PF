@@ -1,7 +1,7 @@
 <div class="container-fluid" >
   <div class="row">
     <div class="col-3 left_side_bar">
-      <%= render 'layouts/left_side_bar', q: @q, tags: @tags, post_ramen: @post_ramen %>
+      <%= render 'layouts/left_side_bar', q: @q, tags: @tags %>
     </div>
     <div class="col-5 post_ramen_main">
       <% @post_ramens.each do |post_ramen| %>
@@ -37,12 +37,12 @@
         <div class="timeline_main">
           <div class="timeline_preview">
             <%= link_to post_ramen_path(post_ramen) do %>
-              <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "200x200" %>
+              <%= attachment_image_tag post_ramen, :image, fallback: "no_image.jpg", size: "250x250" %>
             <% end %>
           </div>
           <div class="timeline_information">
             <div class="timeline_title">
-              店名： <%= post_ramen.title %>
+              店名： <%= post_ramen.shop_name %>
             </div>
             <div class="timeline_content">
               <div class="timeline_content_content">
@@ -57,37 +57,55 @@
           </div>
         </div>
         <% if post_ramen.user == current_user %>
-        <div class="timeline_footer row">
-          <div class="col-3 timeline_footer_box">komento</div>
-          <div class="col-3 timeline_footer_box">
-            <div class="like_button_area-<%= post_ramen.id %>">
-              <%= render 'likes/like_button', post_ramen: post_ramen %>
+        <div class="timeline_footer">
+            <div class="col-3 timeline_footer_box">
+              <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
+              <i class="far fa-comment" style="color: black;"></i>
+              <span style="color:black;"><%= post_ramen.post_comments.count %></span>
+              <% end %>
             </div>
-          </div>
-          <div class="col-3 timeline_footer_box">
-            <%= link_to "編集", edit_post_ramen_path(post_ramen) %>
-          </div>
-          <div class="col-3 timeline_footer_box">
-            <%= link_to "削除", post_ramen_path(post_ramen), method: :delete %>
-          </div>
+            <div class="col-3 timeline_footer_box">
+              <div class="like_button_area-<%= post_ramen.id %>">
+                <%= render 'likes/like_button', post_ramen: post_ramen %>
+              </div>
+            </div>
+            <div class="col-3 timeline_footer_box">
+              <%= link_to edit_post_ramen_path(post_ramen), class: 'btn btn-icon' do %>
+                <i class="fas fa-edit" style="color: black;"></i>
+              <% end %>
+            </div>
+            <div class="col-3 timeline_footer_box">
+              <%= link_to post_ramen_path(post_ramen), data: {confirm: "削除しますか？"}, class: 'btn btn-icon', method: :delete do %>
+                <i class="far fa-trash-alt" style="color: black;"></i>
+              <% end %>
+            </div>
         </div> <!-- end time_line_footer -->
         <% else %>
-        <div class="timeline_footer row">
-          <div class="col-4 timeline_footer_box">komento</div>
+        <div class="timeline_footer">
+          <div class="col-4 timeline_footer_box">
+            <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
+              <i class="far fa-comment" style="color: black;"></i>
+              <span style="color:black;"><%= post_ramen.post_comments.count %></span>
+            <% end %>
+          </div>
           <div class="col-4 timeline_footer_box">
             <div class="like_button_area-<%= post_ramen.id %>">
               <%= render 'likes/like_button', post_ramen: post_ramen %>
             </div>
           </div>
           <div class="col-4 timeline_footer_box">
-            <%= link_to "HOME", root_path %>
+            <%= link_to root_path, class: 'btn btn-icon' do %>
+              <i class="fas fa-home" style="color: black;" ></i>
+            <% end %>
           </div>
         </div> <!-- else end time_line_footer -->
         <% end %> <!--- else end ----->
       </div> <!-- end time_line_box -->
       <% end %> <!-- each文 end -------->
+      <%= paginate @post_ramens %>
     </div> <!-- end post_rames_main -->
-    <div class="col-3 right-side-bar">
+    <div class="col-4 right-side-bar">
+      <%= render 'layouts/right_side_bar', post_ramen_all_ranks: @post_ramen_all_ranks, most_used_tags: @most_used_tags, post_ramen_month_ranks: @post_ramen_month_ranks, post_ramen_year_ranks: @post_ramen_year_ranks, most_used_tags_tab: @most_used_tags_tab, tonkothu_ranks: @tonkothu_ranks, shio_ranks: @shio_ranks %>
     </div>
   </div> <!-- end row -->
 </div>
