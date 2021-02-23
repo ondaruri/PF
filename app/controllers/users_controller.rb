@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @q = PostRamen.ransack(params[:q]) #サイドバー
     @tags = ActsAsTaggableOn::Tag.all #サイドバー
     @post_ramens = @user.post_ramens
-    @post_ramen_randoms = PostRamen.order("RANDOM()").limit(5)
+    @post_ramen_randoms = PostRamen.order("RAND()").limit(5)
   end
 
   def edit
