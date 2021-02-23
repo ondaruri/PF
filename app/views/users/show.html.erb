@@ -16,7 +16,7 @@
             <%= @user.introduction %>
           </div>
           <div class="profile_data">
-              <%= link_to user_path(@user),  class: 'btn btn-icon' do %>
+              <%= link_to new_post_ramen_path,  class: 'btn btn-icon' do %>
               <div class="profile_data_content col">
                 投稿<br><%= @user.post_ramens.count %>
               </div>
@@ -146,7 +146,6 @@
         おすすめ投稿
         </div>
         <div class="tab-list">
-          <!--<div class="tab tab-active">全期間</div>-->
         </div>
         <div class="tabbox-contents"> <!------------投稿--------------->
           <div class="tabbox box-show">
