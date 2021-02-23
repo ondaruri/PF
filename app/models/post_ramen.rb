@@ -3,6 +3,8 @@ class PostRamen < ApplicationRecord
   belongs_to :user
   attachment :image
   validates :image, presence: true
+  validates :title, length: {maximum: 20}
+  validates :content, length: {maximum: 100}
 
   has_many :likes, dependent: :destroy
 
