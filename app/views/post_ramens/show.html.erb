@@ -41,7 +41,7 @@
           </div>
           <div class="timeline_information">
             <div class="timeline_title">
-              店名： <%= @post_ramen.title %>
+              店名： <%= @post_ramen.shop_name %>
             </div>
             <div class="timeline_content">
               <div class="timeline_content_content">
@@ -61,7 +61,7 @@
             <%= link_to post_ramen_path(@post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
               <i class="far fa-comment" style="color: black;"></i>
               <span style="color:black;"><%= @post_ramen.post_comments.count %></span>
-              <% end %>
+            <% end %>
           </div>
           <div class="col-3 timeline_footer_box">
             <div class="like_button_area-<%= @post_ramen.id %>">
@@ -84,8 +84,10 @@
             <div class="col-4 timeline_footer_box">
               <a href="#comment_jamp">
                 <div class="comment_count">
-                  <i class="far fa-comment" style="color: black;"></i>
-                  <span style="color:black;"><%= @post_ramen.post_comments.count %></span>
+                  <%= link_to post_ramen_path(@post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
+                    <i class="far fa-comment" style="color: black;"></i>
+                    <span style="color:black;"><%= @post_ramen.post_comments.count %></span>
+                  <% end %>
                 </div>
               </a>
             </div>

@@ -14,3 +14,48 @@ array.each{ |tag|
   tag_list.save
 }
 
+
+User.create!(
+  [
+    {
+      email: 'ccc@ccc',
+      name: 'タングステン',
+      password: 'cccccc',
+    },
+    {
+      email: 'ddd@ddd',
+      name: 'ポークノップ',
+      password: 'dddddd',
+    },
+    {
+      email: 'eee@eee',
+      name: 'SAORI',
+      password: 'eeeeee',
+    },
+    {
+      email: 'fff@fff',
+      name: 'はらぺっ子',
+      password: 'ffffff',
+    },
+    {
+      email: 'ggg@ggg',
+      name: 'チャシュ蔵',
+      password: 'gggggg',
+    },
+    {
+      email: 'hhh@hhh',
+      name: 'とーふ',
+      password: 'hhhhhh',
+    },
+    {
+      email: 'iii@iii',
+      name: 'タシ',
+      password: 'iiiiii',
+    },
+    {
+      email: 'jjj@jjj',
+      name: '麺パパ',
+      password: 'jjjjjj',
+    },
+  ]
+)
