@@ -1,2 +1,2 @@
-$(".post_comment_index_area").html("<%= j(render partial: 'post_comments/index', locals: { post_ramen: @post_ramen }) %>");
+$(".post_comment_index_area").html("<%= j(render partial: 'post_comments/index', locals: { post_comments: @post_comments }) %>");
 $('.comment_count').html("<%= @post_ramen.post_comments.count %>　件");

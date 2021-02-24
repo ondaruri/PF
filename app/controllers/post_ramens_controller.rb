@@ -46,10 +46,11 @@ class PostRamensController < ApplicationController
 
   def show
     @post_ramen = PostRamen.find(params[:id])
+    @post_comments = @post_ramen.post_comments.order("created_at DESC")
     @post_comment = PostComment.new
     gon.address = @post_ramen
     @post_ramen_tags = @post_ramen.tag_counts_on(:tags)
-    @post_comments = PostComment.where(post_ramen_id: params[:id])
+    # @post_comments = PostComment.where(post_ramen_id: params[:id])
     @q = PostRamen.ransack(params[:q]) #サイドバー
     @tags = ActsAsTaggableOn::Tag.all #サイドバー
   end
