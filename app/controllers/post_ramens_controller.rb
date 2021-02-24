@@ -1,4 +1,5 @@
 class PostRamensController < ApplicationController
+  before_action :baria_user, only: [:edit, :destroy, :update]
 
   def index
     # byebug
@@ -46,10 +47,11 @@ class PostRamensController < ApplicationController
 
   def show
     @post_ramen = PostRamen.find(params[:id])
+    @post_comments = @post_ramen.post_comments.order("created_at DESC")
     @post_comment = PostComment.new
     gon.address = @post_ramen
     @post_ramen_tags = @post_ramen.tag_counts_on(:tags)
-    @post_comments = PostComment.where(post_ramen_id: params[:id])
+    # @post_comments = PostComment.where(post_ramen_id: params[:id])
     @q = PostRamen.ransack(params[:q]) #サイドバー
     @tags = ActsAsTaggableOn::Tag.all #サイドバー
   end
@@ -78,5 +80,11 @@ class PostRamensController < ApplicationController
   def post_ramen_params
     params.require(:post_ramen).permit(:title, :content, :review,
             :shop_name, :address, :image, :user_id, :search_method, :tag, tag_list:[] )
+  end
+
+  def baria_user
+    unless PostRamen.find(params[:id]).user.id.to_i == current_user.id
+        redirect_to root_path
+    end
   end
 end
