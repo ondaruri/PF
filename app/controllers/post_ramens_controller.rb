@@ -1,4 +1,5 @@
 class PostRamensController < ApplicationController
+  before_action :baria_user, only: [:edit, :destroy, :update]
 
   def index
     # byebug
@@ -79,5 +80,11 @@ class PostRamensController < ApplicationController
   def post_ramen_params
     params.require(:post_ramen).permit(:title, :content, :review,
             :shop_name, :address, :image, :user_id, :search_method, :tag, tag_list:[] )
+  end
+
+  def baria_user
+    unless PostRamen.find(params[:id]).user.id.to_i == current_user.id
+        redirect_to root_path
+    end
   end
 end

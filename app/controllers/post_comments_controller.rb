@@ -1,5 +1,5 @@
 class PostCommentsController < ApplicationController
-
+ before_action :baria_user, only: [:destroy]
   def new
   end
 
@@ -30,5 +30,11 @@ class PostCommentsController < ApplicationController
 
   def post_comment_params
     params.require(:post_comment).permit(:content)
+  end
+
+  def baria_user
+    unless PostComment.find(params[:id]).user.id.to_i == current_user.id
+        redirect_to root_path
+    end
   end
 end
