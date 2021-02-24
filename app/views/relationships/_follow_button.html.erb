@@ -1,8 +1,8 @@
 <div class="follow_button">
   <% if current_user.following?(user) %>
-    <%= link_to 'フォロー外す', unfollow_path(user.id), class: 'btn btn-secondary', remote: true,method: :post %>
+    <%= link_to 'フォロー外す', unfollow_path(user.id), class: 'btn btn-secondary', remote: true, method: :post %>
   <% else %>
-    <%= link_to 'フォローする', follow_path(user.id), class: 'btn btn-secondary ', remote: true,method: :post %>
+    <%= link_to 'フォローする', follow_path(user.id), class: 'btn btn-secondary ', remote: true, method: :post %>
   <% end %>
 </div>
 

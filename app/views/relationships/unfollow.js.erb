@@ -1,2 +1,3 @@
 $('.profile_button').html("<%= j(render partial: 'relationships/follow_button', locals: { user: @user }) %>");
-$('.followed_count').html("<%= j(render partial: 'relationships/followed_count', locals: { user: @user }) %>");
+$('.followed_count').html("フォロワー<br><%= @user.follower_user.count %>");
+$('.follow_button-<%= follower.id %>').html("<%= j(render partial: 'relationships/follow_button', locals: { user: @follower}) %>");

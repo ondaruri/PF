@@ -27,12 +27,21 @@
               <%= follower.introduction %>
             </td>
             <td>
-              <% if current_user.following?(follower) %>
-                <%= link_to 'フォロー外す', unfollow_path(@user.id), class: 'btn btn-secondary', method: :post %>
-              <% else %>
-                <%= link_to 'フォローする', follow_path(@user.id), class: 'btn btn-secondary ', method: :post %>
+              <% unless current_user == follower %>
+              <div class="follow_button-<%= follower.id %>">
+               <%= render 'relationships/follow_button', user: follower %>
+              </div>
               <% end %>
             </td>
+            <!--<td>-->
+            <!--  <%# unless current_user == follower %>-->
+            <!--  <%# if current_user.following?(follower) %>-->
+            <!--    <%#= link_to 'フォロー外す', unfollow_path(@user.id), class: 'btn btn-secondary', method: :post %>-->
+            <!--  <%# else %>-->
+            <!--    <%#= link_to 'フォローする', follow_path(@user.id), class: 'btn btn-secondary ', method: :post %>-->
+            <!--  <%# end %>-->
+            <!--  <%# end %>-->
+            <!--</td>-->
           </tr>
           <% end %>
         </tbody>

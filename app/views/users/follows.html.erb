@@ -27,10 +27,12 @@
               <%= following.introduction %>
             </td>
             <td>
+              <% unless current_user == following %>
               <% if current_user.following?(following) %>
                 <%= link_to 'フォロー外す', unfollow_path(@user.id), class: 'btn btn-secondary', method: :post %>
               <% else %>
                 <%= link_to 'フォローする', follow_path(@user.id), class: 'btn btn-secondary ', method: :post %>
+              <% end %>
               <% end %>
             </td>
           </tr>
