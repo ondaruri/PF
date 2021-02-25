@@ -7,7 +7,7 @@ before_action :baria_user, only: [:edit, :update]
     @q = PostRamen.ransack(params[:q]) #サイドバー
     @tags = ActsAsTaggableOn::Tag.all #サイドバー
     @post_ramens = @user.post_ramens.order("created_at DESC")
-    @post_ramen_randoms = PostRamen.order("RANDOM()").limit(5)
+    @post_ramen_randoms = PostRamen.order("RAND()").limit(5)
   end
 
   def edit
