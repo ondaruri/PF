@@ -40,7 +40,7 @@ private
   end
 
   def baria_user
-    unless User.find(params[:id]) == current_user.id
+    unless User.find(params[:id]) == current_user
       redirect_to root_path
     end
   end
