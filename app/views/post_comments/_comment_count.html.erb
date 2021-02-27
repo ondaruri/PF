@@ -1,0 +1,4 @@
+  <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
+    <i class="far fa-comment" style="color: black;"></i>
+    <span style="color:black;"><%= post_ramen.post_comments.count %></span>
+  <% end %>
