@@ -58,11 +58,11 @@
         <% if @post_ramen.user == current_user %>
         <div class="timeline_footer">
           <div class="col-3 timeline_footer_box">
-            <%= link_to post_ramen_path(@post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
-              <i class="far fa-comment" style="color: black;"></i>
-              <span style="color:black;"><%= @post_ramen.post_comments.count %></span>
-            <% end %>
-          </div>
+            <a href="#comment_jamp">
+              <div class="comment_count">
+              <%= render 'post_comments/comment_count', post_ramen: @post_ramen %>
+              </div>
+            </a>
           <div class="col-3 timeline_footer_box">
             <div class="like_button_area-<%= @post_ramen.id %>">
               <%= render 'likes/like_button', post_ramen: @post_ramen %>
@@ -84,10 +84,7 @@
             <div class="col-4 timeline_footer_box">
               <a href="#comment_jamp">
                 <div class="comment_count">
-                  <%= link_to post_ramen_path(@post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
-                    <i class="far fa-comment" style="color: black;"></i>
-                    <span style="color:black;"><%= @post_ramen.post_comments.count %></span>
-                  <% end %>
+                  <%= render 'post_comments/comment_count', post_ramen: @post_ramen %>
                 </div>
               </a>
             </div>
