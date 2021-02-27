@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col-sm-12 col-lg-5 px-sm-0 mx-auto my-5">
     <%= form_with model:user, local:true do |f| %>
-      <%= attachment_image_tag(user, :image, :fill,50,50, fallback: "ダウンロード.png" ) %>
+      <%= attachment_image_tag(user, :image, size: "50x50", fallback: "ダウンロード.png" ) %>
       <div class="form-group">
         <%= f.label :image %><br>
         <%= f.attachment_field :image, class: "form-control-file user_image" %>
