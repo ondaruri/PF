@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_09_093306) do
+ActiveRecord::Schema.define(version: 2021_03_01_091922) do
 
   create_table "clips", force: :cascade do |t|
     t.integer "post_ramen_id", null: false
     t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "image_tags", force: :cascade do |t|
+    t.string "name"
+    t.integer "post_ramen_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

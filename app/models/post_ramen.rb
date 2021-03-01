@@ -7,6 +7,7 @@ class PostRamen < ApplicationRecord
   validates :content, length: {maximum: 100}
 
   has_many :likes, dependent: :destroy
+  has_many :image_tags, dependent: :destroy
 
   geocoded_by :address                            #geocoder使用のための記載 addressカラムを基準に経緯度を算出
   after_validation :geocode                       #住所変更時に経緯度も変更
