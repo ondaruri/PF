@@ -52,6 +52,12 @@
                   <%= link_to "#"+tag.name, post_ramens_path(tag.name), class: "badge badge-pill badge-primary" %>
                 <% end %>
               </div>
+              <div class="tag_area">
+                ~投稿写真判定~<br>
+                <% @post_ramen.image_tags.each do |tag| %>
+                  <span class="label badge badge-pill badge-secondary"><%= tag.name %></span>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -63,6 +69,7 @@
               <%= render 'post_comments/comment_count', post_ramen: @post_ramen %>
               </div>
             </a>
+          </div>
           <div class="col-3 timeline_footer_box">
             <div class="like_button_area-<%= @post_ramen.id %>">
               <%= render 'likes/like_button', post_ramen: @post_ramen %>

@@ -38,7 +38,11 @@ class PostRamensController < ApplicationController
     @post_ramen = PostRamen.new(post_ramen_params)
     @post_ramen.user_id = current_user.id
     if
-      @post_ramen.save!
+      @post_ramen.save
+      image_tags = Vision.get_image_data(@post_ramen.image)
+      image_tags.each do |tag|
+        @post_ramen.image_tags.create(name: tag)
+      end
       redirect_to post_ramen_path(@post_ramen), notice: '新規投稿しました。'
     else
       redirect_to root_path
@@ -59,16 +63,22 @@ class PostRamensController < ApplicationController
   def edit
     @post_ramen = PostRamen.find(params[:id])
     @tags = ActsAsTaggableOn::Tag.all
+    @list = List.find(params[:id])
   end
 
   def update
     post_ramen = PostRamen.find(params[:id])
     post_ramen.update(post_ramen_params)
+    list = List.find(params[:id])
+    list.update(list_params)
     redirect_to post_ramen_path(post_ramen)
+
   end
 
   def destroy
     PostRamen.find(params[:id]).destroy
+    list = List.find(params[:id])
+    list.destroy
     redirect_to root_path, alert: "投稿を削除しました。"
   end
 
@@ -82,9 +92,14 @@ class PostRamensController < ApplicationController
             :shop_name, :address, :image, :user_id, :search_method, :tag, tag_list:[] )
   end
 
+  def list_params
+    params.require(:list).permit(:title, :body, :image)
+  end
+
   def baria_user
     unless PostRamen.find(params[:id]).user.id.to_i == current_user.id
         redirect_to root_path
     end
   end
+
 end
