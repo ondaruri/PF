@@ -16,8 +16,6 @@
 ### 主な利用シーン
 ・外食時のお店検討に
 
-## 設計書
-<製作中>
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1hDXluGTp9sGk16FCzaZW3vAOwOFs_kl11J4cQhjwI2w/edit#gid=0
@@ -29,5 +27,4 @@ https://docs.google.com/spreadsheets/d/1hDXluGTp9sGk16FCzaZW3vAOwOFs_kl11J4cQhjw
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## 使用素材
-未定
+
