@@ -71,7 +71,8 @@ gem 'jquery-rails'
 gem 'kaminari','~> 1.2.1'
 gem 'dotenv-rails'
 group :production do
-  gem 'mysql2'
+  # gem 'mysql2'
+ gem 'mysql2', '~> 0.5.3'
 end
 gem 'pry-byebug'
 gem "gmaps4rails"
