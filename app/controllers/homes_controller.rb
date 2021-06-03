@@ -1,5 +1,9 @@
 class HomesController < ApplicationController
+
   def top
+  end
+
+  def index
     @q = PostRamen.ransack(params[:q])
     @tags = ActsAsTaggableOn::Tag.all
     @post_ramens = PostRamen.all.order("created_at DESC").page(params[:page]).per(20)

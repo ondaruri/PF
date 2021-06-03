@@ -11,11 +11,15 @@
           <li><%= link_to ' Minnano_ramen',root_path,class: 'nav-link text-light' %></li>
           <li><%= link_to ' Mypage',user_path(current_user),class: 'nav-link text-light' %></li>
           <li><%#= link_to ' お気に入り',clips_path ,class: 'fas fa-book-open nav-link text-light'%></li>
-          <li><%= link_to ' Logout', destroy_user_session_path, method: :delete,class: 'nav-link text-light' %></li>
+          <li><%= link_to ' User_Logout', destroy_user_session_path, method: :delete,class: 'nav-link text-light' %></li>
         <% else %>
-          <li><%= link_to ' Minnano_ramen',root_path, class: 'nav-link text-light' %></li>
-          <li><%= link_to ' Signup', new_user_registration_path,class: 'nav-link text-light' %></li>
-          <li><%= link_to ' Login', new_user_session_path ,class: 'nav-link text-light'%></li>
+          <% if admin_signed_in? %>
+            <li><%= link_to ' Admin_Logout', destroy_admin_session_path, method: :delete,class: 'nav-link text-light' %></li>
+          <% else %>
+            <li><%= link_to ' Minnano_ramen',root_path, class: 'nav-link text-light' %></li>
+            <li><%= link_to ' User_Signup', new_user_registration_path,class: 'nav-link text-light' %></li>
+            <li><%= link_to ' User_Login', new_user_session_path ,class: 'nav-link text-light'%></li>
+          <% end %>
         <% end %>
         </ul>
       </div>
