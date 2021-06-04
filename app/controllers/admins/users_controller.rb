@@ -18,4 +18,10 @@ class Admins::UsersController < ApplicationController
     @user = User.find(params[:format]).destroy
     redirect_to admins_users_index_path, alert: "ユーザーを削除しました"
   end
+
+  # private
+  #   def post_ramen_params
+  #     params.require(:post_ramen).permit(:id, :user_id, :post_ramen_id)
+  #   end
+
 end

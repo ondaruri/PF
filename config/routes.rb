@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
   namespace :admins do
+    get 'post_ramens/index'
+    get 'post_ramens/show'
+    get 'post_ramens/create'
+    get 'post_ramens/edit'
+    patch 'post_ramens/update'
+    delete 'post_ramens/destroy/:post_ramen_id', to: 'post_ramens#destroy'
+  end
+  namespace :admins do
     get 'users/index'
     get 'users/edit'
     get 'users/show'
