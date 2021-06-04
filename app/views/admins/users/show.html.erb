@@ -29,15 +29,16 @@
               </div>
               <% end %>
           </div>
-            <% if @user == current_user %>
+            <!--<#% if @user == current_user %>-->
+            <!--<div class="profile_button">-->
+            <!--  <%#= link_to "プロフィールを編集", edit_user_path(@user), class: "btn btn-primary" %>-->
+            <!--</div>-->
+            <!--<#% else %>-->
             <div class="profile_button">
-              <%= link_to "プロフィールを編集", edit_user_path(@user), class: "btn btn-primary" %>
+              <%= render 'destroy_button', user: @user%>
+              <%#= render 'relationships/follow_button', user: @user %>
             </div>
-            <% else %>
-            <div class="profile_button">
-              <%= render 'relationships/follow_button', user: @user %>
-            </div>
-            <% end %>
+            <%# end %>
         </div>
       </div>
       <% @post_ramens.each do |post_ramen| %>
@@ -104,7 +105,7 @@
             </div>
             <div class="col-3 timeline_footer_box">
               <div class="like_button_area-<%= post_ramen.id %>">
-                <%= render 'likes/like_button', post_ramen: post_ramen %>
+                <%#= render 'likes/like_button', post_ramen: post_ramen %>
               </div>
             </div>
             <div class="col-3 timeline_footer_box">
@@ -128,7 +129,7 @@
             </div>
             <div class="col-4 timeline_footer_box">
               <div class="like_button_area-<%= post_ramen.id %>">
-                <%= render 'likes/like_button', post_ramen: post_ramen %>
+                <%#= render 'likes/like_button', post_ramen: post_ramen %>
               </div>
             </div>
             <div class="col-4 timeline_footer_box">
