@@ -1,24 +1,90 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>MINNANO_RAMEN！</span></a>
+      <% if user_signed_in? %>
+      <% if admin_signed_in? %>
+      <a class="navbar-brand" href="admins/users/index"><span>MINNANO★RAMEN User&Admin</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
-        <% if user_signed_in? %>
-          <li><%= link_to ' Minnano_ramen',root_path,class: 'nav-link text-light' %></li>
-          <li><%= link_to ' Mypage',user_path(current_user),class: 'nav-link text-light' %></li>
-          <li><%#= link_to ' お気に入り',clips_path ,class: 'fas fa-book-open nav-link text-light'%></li>
-          <li><%= link_to ' Logout', destroy_user_session_path, method: :delete,class: 'nav-link text-light' %></li>
-        <% else %>
-          <li><%= link_to ' Minnano_ramen',root_path, class: 'nav-link text-light' %></li>
-          <li><%= link_to ' Signup', new_user_registration_path,class: 'nav-link text-light' %></li>
-          <li><%= link_to ' Login', new_user_session_path ,class: 'nav-link text-light'%></li>
-        <% end %>
+          <li><%= link_to 'User_top',homes_index_path,class: 'nav-link text-light' %></li>
         </ul>
       </div>
-    </div>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li><%= link_to 'Admin_top',admins_users_index_path,class: 'nav-link text-light' %></li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li><%= link_to 'User_Logout',destroy_user_session_path, method: :delete, class: 'nav-link text-light' %></li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li><%= link_to 'Admin_Logout',destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %></li>
+        </ul>
+      </div>
+      <% end %>
+      <% end %>
+    </div> <!------USER&ADMIN------>
+    <div class="container">
+      <% if user_signed_in? %>
+      <% if admin_signed_in? %>
+      <% else %>
+      <a class="navbar-brand" href="homes/index"><span>MINNANO★RAMEN User</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li><%= link_to 'User_Logout',destroy_user_session_path, method: :delete, class: 'nav-link text-light' %></li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li><%= link_to 'Admin_Login',new_admin_session_path, class: 'nav-link text-light' %></li>
+        </ul>
+      </div>
+
+      <% end %>
+      <% end %>
+    </div> <!---------USER-------->
+    <div class="container">
+      <% if user_signed_in? %>
+      <% else %>
+      <% if admin_signed_in? %>
+      <a class="navbar-brand" href="admins/users/index"><span>MINNANO★RAMEN ADMIN</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li><%= link_to 'User_Login', new_user_session_path,class: 'nav-link text-light' %></li>
+        </ul>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <li><%= link_to 'Admin_Logout', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %></li>
+        </ul>
+      </div>
+
+      <% end %>
+      <% end %>
+    </div> <!---------ADMIN-------->
+    <div class="container">
+      <% if user_signed_in? %>
+      <% else %>
+      <% if admin_signed_in? %>
+      <% else %>
+      <a class="navbar-brand" href="/"><span>MINNANO★RAMEN NONE</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <% end %>
+      <% end %>
+    </div> <!---------NONE-------->
   </nav>
 </header>

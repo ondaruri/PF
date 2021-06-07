@@ -1,4 +1,4 @@
-<h2>Log in</h2>
+<h2>ユーザーLog in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="login_form container">
@@ -24,10 +24,6 @@
          <%= render "devise/shared/links" %>
         <div class="actions">
           <%= f.submit "Log in" %>
-        </div>
-        <div class="guest_login_button">
-          ゲストログインはこちら↓<br>
-          <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-secondary login" %>
         </div>
       </div>
       <div class="col-3"></div>

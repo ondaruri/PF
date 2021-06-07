@@ -1,0 +1,93 @@
+<div class="container-fluid" >
+  <div class="row">
+    <div class="col-3 left_side_bar">
+    </div>       <!--#------------------メイン--------------------------->
+    <div class="col-5 post_ramen_main">
+      <div class="timeline_box_postramen">
+        <div class="timeline_header">
+          <div class="row">
+            <div class="col-2 icon-user">
+              <%= link_to admins_user_show_path(@post_ramen.user) do %>
+              <%= attachment_image_tag @post_ramen.user, :image, fallback: "no_image.jpg", size: "50x50" %>
+              <% end %>
+            </div>
+            <div class="col-3 user_name">
+              <%= @post_ramen.user.name %>
+            </div>
+            <div class="review col-4">
+              <div id="star-rate-<%= @post_ramen.id %>">
+                <script>
+                  $('#star-rate-<%= @post_ramen.id %>').raty({
+                    size: 20,
+                    starOff:  '<%= asset_path('star-off.png') %>',
+                    starOn : '<%= asset_path('star-on.png') %>',
+                    starHalf: '<%= asset_path('star-half.png') %>',
+                    half: true,
+                    readOnly: true,
+                    score: <%= @post_ramen.review %>,
+                  });
+              </script>
+              </div>
+            </div>
+            <div class="col-3 time_cell">
+              <%= @post_ramen.created_at.strftime('%Y/%m/%d %R') %>
+            </div>
+          </div>
+        </div>
+        <div class="timeline_main">
+          <div class="timeline_preview">
+            <%= attachment_image_tag @post_ramen, :image, fallback: "no_image.jpg", size: "200x200" %>
+          </div>
+          <div class="timeline_information">
+            <div class="timeline_title">
+              店名： <%= @post_ramen.shop_name %>
+            </div>
+            <div class="timeline_content">
+              <div class="timeline_content_content">
+                <%= @post_ramen.content %>
+              </div>
+              <div class="tag_area">
+                <% @post_ramen_tags.each do |tag| %>
+                  <%= link_to "#"+tag.name, post_ramens_path(tag.name), class: "badge badge-pill badge-primary" %>
+                <% end %>
+              </div>
+              <div class="tag_area">
+                ~投稿写真判定~<br>
+                <% @post_ramen.image_tags.each do |tag| %>
+                  <span class="label badge badge-pill badge-secondary"><%= tag.name %></span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline_footer">
+          <div class="col-4 timeline_footer_box">
+            <a href="#comment_jamp">
+              <div class="comment_count">
+              <%= render 'post_comments/comment_count', post_ramen: @post_ramen %>
+              </div>
+            </a>
+          </div>
+          <div class="col-4 timeline_footer_box">
+            <div class="like_button_area-<%= @post_ramen.id %>">
+              <%= render 'admins/admins_like_button', post_ramen: @post_ramen %>
+            </div>
+          </div>
+          <div class="col-4 timeline_footer_box">
+            <%= link_to admins_path(@post_ramen), data: {confirm: "削除しますか？"}, class: 'btn btn-icon',  method: :delete do %>
+              <i class="far fa-trash-alt" style="color: black;"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="post_comment_index_area">
+        <%= render 'admins/admins_post_comments_index', post_comments: @post_comments %>
+      </div>
+    </div>
+    <div class="col-4 right_side_bar">  <!-------------------------right_side-------------------------------->
+    </div>
+  </div>
+</div>  <!----------------------container fluid---------->
+
+
+

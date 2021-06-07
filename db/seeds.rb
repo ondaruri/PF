@@ -59,3 +59,9 @@ User.create!(
     },
   ]
 )
+
+Admin.create!(
+   email: 'admin@admin',
+   name: 'admin',
+   password: 'adminadmin',
+)
