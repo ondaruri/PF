@@ -18,7 +18,7 @@ end
   namespace :admins do
     get 'users/index'
     get 'users/edit'
-    get 'users/show'
+    get 'users/show/:user_id', to: 'users#show', as: :user_show
     patch 'users/update'
     delete 'users/destroy'
   end

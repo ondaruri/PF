@@ -14,12 +14,12 @@
           <% @users.each do |user| %>
           <tr>
             <td>
-              <%= link_to admins_users_show_path(user) do %>
+              <%= link_to admins_user_show_path(user) do %>
               <%= attachment_image_tag user, :image, fallback: "no_image.jpg", size: "50x50" %>
               <% end %>
             </td>
             <td>
-              <%= link_to admins_users_show_path(user) do %>
+              <%= link_to admins_user_show_path(user) do %>
               <%= user.name %>
               <% end %>
             </td>

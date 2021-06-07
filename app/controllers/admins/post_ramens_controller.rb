@@ -18,10 +18,10 @@ class Admins::PostRamensController < ApplicationController
   end
 
   def destroy
-    post_ramen = PostRamen.find(params[:post_ramen_id])
+    post_ramen = PostRamen.find(params[:id])
     user = post_ramen.user_id
-    PostRamen.find(params[:post_ramen_id]).destroy
-    redirect_to admins_users_show_path(user), alert: "投稿を削除しました"
+    PostRamen.find(params[:id]).destroy
+    redirect_to admins_user_show_path(user), alert: "投稿を削除しました"
   end
 
   # private

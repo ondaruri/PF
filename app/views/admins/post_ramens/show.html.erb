@@ -7,7 +7,7 @@
         <div class="timeline_header">
           <div class="row">
             <div class="col-2 icon-user">
-              <%= link_to admins_users_show_path(@post_ramen.user) do %>
+              <%= link_to admins_user_show_path(@post_ramen.user) do %>
               <%= attachment_image_tag @post_ramen.user, :image, fallback: "no_image.jpg", size: "50x50" %>
               <% end %>
             </div>
@@ -61,24 +61,19 @@
           </div>
         </div>
         <div class="timeline_footer">
-          <div class="col-3 timeline_footer_box">
+          <div class="col-4 timeline_footer_box">
             <a href="#comment_jamp">
               <div class="comment_count">
               <%= render 'post_comments/comment_count', post_ramen: @post_ramen %>
               </div>
             </a>
           </div>
-          <div class="col-3 timeline_footer_box">
+          <div class="col-4 timeline_footer_box">
             <div class="like_button_area-<%= @post_ramen.id %>">
               <%= render 'admins/admins_like_button', post_ramen: @post_ramen %>
             </div>
           </div>
-          <div class="col-3 timeline_footer_box">
-            <%= link_to edit_post_ramen_path(@post_ramen), class: 'btn btn-icon' do %>
-              <i class="fas fa-edit" style="color: black;"></i>
-            <% end %>
-          </div>
-          <div class="col-3 timeline_footer_box">
+          <div class="col-4 timeline_footer_box">
             <%= link_to admins_path(@post_ramen), data: {confirm: "削除しますか？"}, class: 'btn btn-icon',  method: :delete do %>
               <i class="far fa-trash-alt" style="color: black;"></i>
             <% end %>
