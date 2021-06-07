@@ -8,7 +8,7 @@ class Admins::UsersController < ApplicationController
 
   def show
      @user = User.find(params[:format])
-     @post_ramens = @user.post_ramens
+     @post_ramens = @user.post_ramens.order("created_at DESC")
   end
 
   def update

@@ -3,6 +3,9 @@ class Admins::PostRamensController < ApplicationController
   end
 
   def show
+    @post_ramen = PostRamen.find(params[:post_ramen_id])
+    @post_ramen_tags = @post_ramen.tag_counts_on(:tags)
+    @post_comments = @post_ramen.post_comments
   end
 
   def create

@@ -17,11 +17,11 @@
             <%= @user.introduction %>
           </div>
           <div class="profile_data">
-              <%= link_to new_post_ramen_path,  class: 'btn btn-icon' do %>
+            <div class="btn btn-icon">
               <div class="profile_data_content col">
                 投稿<br><%= @user.post_ramens.count %>
               </div>
-              <% end %>
+            </div>
                 <%= render 'relationships/followed_count', user: @user %>
               <%= link_to follows_user_path(@user), class: 'btn btn-icon' do %>
               <div class="profile_data_content col">
@@ -29,16 +29,9 @@
               </div>
               <% end %>
           </div>
-            <!--<#% if @user == current_user %>-->
-            <!--<div class="profile_button">-->
-            <!--  <%#= link_to "プロフィールを編集", edit_user_path(@user), class: "btn btn-primary" %>-->
-            <!--</div>-->
-            <!--<#% else %>-->
             <div class="profile_button">
               <%= render 'user_destroy_button', user: @user%>
-              <%#= render 'relationships/follow_button', user: @user %>
             </div>
-            <%# end %>
         </div>
       </div>
       <% @post_ramens.each do |post_ramen| %>
@@ -98,14 +91,15 @@
         <% if admin_signed_in? %>
         <div class="timeline_footer">
             <div class="col-3 timeline_footer_box">
-              <%= link_to post_ramen_path(post_ramen, anchor: 'comment_jamp'), class: 'btn btn-icon' do %>
-              <i class="far fa-comment" style="color: black;"></i>
+              <%= link_to admins_post_ramens_show_path(post_ramen), class: 'btn btn-icon' do %>
+              <i class="far fa-comment" style="color: black;">
               <span style="color:black;"><%= post_ramen.post_comments.count %></span>
+              </i>
               <% end %>
             </div>
             <div class="col-3 timeline_footer_box">
               <div class="like_button_area-<%= post_ramen.id %>">
-                <%#= render 'likes/like_button', post_ramen: post_ramen %>
+                <%= render 'admins/admins_like_button', post_ramen: post_ramen %>
               </div>
             </div>
             <div class="col-3 timeline_footer_box">
