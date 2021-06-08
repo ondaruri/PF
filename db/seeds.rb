@@ -15,7 +15,7 @@ array.each{ |tag|
 }
 
 
-User.create!(
+User.find_or_create_by!(
   [
     {
       email: 'ccc@ccc',
@@ -60,7 +60,7 @@ User.create!(
   ]
 )
 
-Admin.create!(
+Admin.find_or_create_by(
    email: 'admin@admin',
    name: 'admin',
    password: 'adminadmin',
