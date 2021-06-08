@@ -1,5 +1,5 @@
 class PostCommentsController < ApplicationController
- before_action :baria_user, only: [:destroy]
+ before_action :authenticate_user!
   def new
   end
 

@@ -1,5 +1,8 @@
 class Admins::PostRamensController < ApplicationController
+   before_action :authenticate_admin!
+   
   def index
+    @post_ramens = PostRamen.all.order("created_at DESC").page(params[:page]).per(20)
   end
 
   def show

@@ -62,11 +62,11 @@
         </div>
         <div class="timeline_footer">
           <div class="col-4 timeline_footer_box">
-            <a href="#comment_jamp">
-              <div class="comment_count">
-              <%= render 'post_comments/comment_count', post_ramen: @post_ramen %>
+              <div class="btn btn-icon comment_count">
+                <i class="far fa-comment" style="color: black;">
+                <span style="color:black;"><%= @post_ramen.post_comments.count %></span>
+                </i>
               </div>
-            </a>
           </div>
           <div class="col-4 timeline_footer_box">
             <div class="like_button_area-<%= @post_ramen.id %>">
