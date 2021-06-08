@@ -1,5 +1,5 @@
 class PostRamensController < ApplicationController
-  before_action :baria_user, only: [:edit, :destroy, :update]
+  before_action :authenticate_user!
 
   def index
     # byebug

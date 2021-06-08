@@ -1,6 +1,12 @@
 class Admins::UsersController < ApplicationController
+   before_action :authenticate_admin!
+
   def index
-    @users = User.all
+    @users = User.all.order("created_at DESC")
+  end
+
+  def search
+    @users = User.search(params[:search]).order("created_at DESC")
   end
 
   def edit
@@ -15,7 +21,7 @@ class Admins::UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:format]).destroy
+    @user = User.find(params[:user_id]).destroy
     redirect_to admins_users_index_path, alert: "ユーザーを削除しました"
   end
 

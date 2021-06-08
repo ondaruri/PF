@@ -18,9 +18,10 @@ end
   namespace :admins do
     get 'users/index'
     get 'users/edit'
+    get 'users/search', to: 'users#search', as: :user_search
     get 'users/show/:user_id', to: 'users#show', as: :user_show
     patch 'users/update'
-    delete 'users/destroy'
+    delete 'users/destroy/:user_id', to: 'users#destroy', as: :users_destroy
   end
   # devise_for :admins
   devise_for :users

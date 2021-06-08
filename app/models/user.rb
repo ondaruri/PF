@@ -23,6 +23,14 @@ def self.guest
   end
 end
 
+def self.search(search) #self.でクラスメソッドとしている
+    if search
+      User.where(['name LIKE ?', "%#{search}%"])
+    else
+      User.all #全て表示。
+    end
+end
+
   # ユーザーをフォローする
 def follow(user_id)
    follower.create(followed_id: user_id)
