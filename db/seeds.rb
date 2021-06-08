@@ -15,7 +15,7 @@ array.each{ |tag|
 }
 
 
-User.find_or_create_by!(
+User.first_or_create(
   [
     {
       email: 'ccc@ccc',
@@ -60,7 +60,7 @@ User.find_or_create_by!(
   ]
 )
 
-Admin.find_or_create_by(
+Admin.first_or_create(
    email: 'admin@admin',
    name: 'admin',
    password: 'adminadmin',
