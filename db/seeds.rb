@@ -65,3 +65,10 @@ Admin.first_or_create(
    name: 'admin',
    password: 'adminadmin',
 )
+
+PostRamen.create!(
+   user_id: "9",
+   image: File.open("./app/assets/images/人面犬.png"),
+   title: 'test',
+   content: 'aaaaaaaaa',
+)
