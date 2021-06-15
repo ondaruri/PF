@@ -8,8 +8,8 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :clips, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :messages
-  has_many :entries
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   has_many :rooms, through: :entries
   attachment :image
 
