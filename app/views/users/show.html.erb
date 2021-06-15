@@ -16,17 +16,41 @@
             <%= @user.introduction %>
           </div>
           <div class="profile_data">
+            <% if @user == current_user %>
               <%= link_to new_post_ramen_path,  class: 'btn btn-icon' do %>
               <div class="profile_data_content col">
                 投稿<br><%= @user.post_ramens.count %>
               </div>
-              <% end %>
+            <% end %>
                 <%= render 'relationships/followed_count', user: @user %>
               <%= link_to follows_user_path(@user), class: 'btn btn-icon' do %>
               <div class="profile_data_content col">
                 フォロー<br><%= @user.following_user.count %>
               </div>
               <% end %>
+            <% else %>
+            <% if @isRoom == true %>
+              <%= link_to room_show_path(@room_id),  class: 'btn btn-icon' do %>
+              <div class="profile_data_content col">
+                メッセージを<br>送る
+              </div>
+              <% end %>
+            <% else %>
+              <%= form_with(model: @room, local: true) do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, value: @user.id %>
+                <% end %>
+                <%= f.submit "メッセージを送る", class:"profile_data_content col"%>
+              <% end %>
+            <% end %>
+              <%= render 'relationships/followed_count', user: @user %>
+              <%= link_to follows_user_path(@user), class: 'btn btn-icon' do %>
+              <div class="profile_data_content col">
+                フォロー<br><%= @user.following_user.count %>
+              </div>
+              <% end %>
+            <% end %>
+
           </div>
             <% if @user == current_user %>
             <div class="profile_button">

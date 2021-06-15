@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'messages/create'
+  get 'rooms/index'
+  get 'rooms/create'
+  get 'rooms/show'
+  devise_for :admins, controllers: {
+  sessions:      'admins/sessions',
+  passwords:     'admins/passwords',
+  registrations: 'admins/registrations'
+  }
+
   namespace :admins do
     get 'post_ramens/index'
     get 'post_ramens/show/:post_ramen_id', to: 'post_ramens#show', as: :post_ramen_show
@@ -11,8 +21,7 @@ Rails.application.routes.draw do
 
  namespace :admins do
   delete 'post_ramens/post_comments/destroy/:post_ramen_id/:post_comment_id', to: 'post_comments#destroy', as: :post_comment_destroy
-end
-
+ end
 
 
   namespace :admins do
@@ -23,7 +32,8 @@ end
     patch 'users/update'
     delete 'users/destroy/:user_id', to: 'users#destroy', as: :users_destroy
   end
-  # devise_for :admins
+
+
   devise_for :users
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
@@ -54,12 +64,10 @@ end
   # get 'users/:current_user.id' => 'users#mypage', as: 'my_page'
   get 'post_ramens/search'
 
-  devise_for :admins, controllers: {
-  sessions:      'admins/sessions',
-  passwords:     'admins/passwords',
-  registrations: 'admins/registrations'
-}
-
+  resources :users, only: [:show,:edit,:update]
+  resources :messages, only: [:create]
+  resources :rooms, only: [:create]
+  get 'rooms/show/:room_id', to: 'rooms#show', as: :room_show
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
