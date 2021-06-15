@@ -8,6 +8,9 @@ class User < ApplicationRecord
   has_many :post_comments, dependent: :destroy
   has_many :clips, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :messages
+  has_many :entries
+  has_many :rooms, through: :entries
   attachment :image
 
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #フォロー取得
