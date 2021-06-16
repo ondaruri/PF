@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_134349) do
+ActiveRecord::Schema.define(version: 2021_06_16_003428) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -54,13 +54,13 @@ ActiveRecord::Schema.define(version: 2021_06_15_134349) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "user_id_id"
-    t.integer "room_id_id"
+    t.integer "user_id"
+    t.integer "room_id"
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["room_id_id"], name: "index_messages_on_room_id_id"
-    t.index ["user_id_id"], name: "index_messages_on_user_id_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "post_comments", force: :cascade do |t|
