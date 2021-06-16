@@ -14,9 +14,13 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:room_id])
+    if Entry.where(user_id: current_user.id,room_id: @room.id).present?
     @messages = @room.messages.includes(:user).order("created_at desc")
     @message = Message.new
     @entries = @room.entries
+    else
+      redirect_to homes_index_path
+    end
 
   end
 end
