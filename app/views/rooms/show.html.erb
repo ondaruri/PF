@@ -11,7 +11,7 @@
 <% end %>
 <hr>
   <div class="posts">
-    <%= form_with(model: @message, local: true) do |f| %>
+    <%= form_with(model: @message, remote: true) do |f| %>
       <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
         <%= f.hidden_field :room_id, value: @room.id %>
           <%= f.submit "投稿",class: 'form-submit'%>
@@ -20,17 +20,6 @@
 
 <div class="chats">
   <div class="chat">
-    <% if @messages.present? %>
-      <% @messages.each do |m| %>
-        <div class="chat-box">
-          <div class="chat-face">
-            <%= attachment_image_tag m.user, :image, fallback: "no_image.jpg", size: "50x50" %>
-          </div>
-          <div class="chat-hukidashi"> <strong><%= m.message %></strong> <br>
-            <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render 'messages/chat', messages: @messages %>
   </div>
 </div>
