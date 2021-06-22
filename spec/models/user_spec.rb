@@ -5,7 +5,5 @@ RSpec.describe "User モデルのテスト", type: :model do
     user = User.new(email: "zzz@zzz", password: "zzzzzz")
     expect(user).to be_valid
   end
-  
-  
-  
+
 end
