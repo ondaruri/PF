@@ -9,6 +9,7 @@ class PostCommentsController < ApplicationController
     comment = current_user.post_comments.new(post_comment_params)
     comment.post_ramen_id = @post_ramen.id
     comment.save
+    @post_ramen.create_notification_post_comment!(current_user, comment.id)
   end
 
   def show

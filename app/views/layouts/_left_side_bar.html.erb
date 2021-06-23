@@ -10,9 +10,9 @@
           <div class="left_side_text">
             ホーム
           </div>
-        </div>
+        </div> <!-------------home----------->
         <% end %>
-        <%= link_to new_post_ramen_path do %>
+        <%= link_to new_post_ramen_path do %> <!-------------投稿----------->
         <div class="left_side_link">
           <div class="left_side_icon_outer ">
             <i class="fas fa-edit left_side_icon"></i>
@@ -22,7 +22,7 @@
           </div>
         </div>
         <% end %>
-        <%= link_to user_path(current_user) do %>
+        <%= link_to user_path(current_user) do %> <!-------------mypage----------->
         <div class="left_side_link">
           <div class="left_side_icon_outer ">
             <i class="left_side_icon"><%= attachment_image_tag current_user, :image, fallback: "no_image.jpg", size: "43x43", class: "left_side_user_icon" %></i>
@@ -31,6 +31,37 @@
             マイページ
           </div>
         </div>
+        <% end %>
+        <%= link_to notifications_path do %>
+        <% if unchecked_notifications.any? %>
+        <div class="left_side_link">
+          <div class="left_side_icon_outer">
+            <i class="far fa-bell left_side_icon" style="color:tomato"></i>
+          </div>
+          <div class="left_side_text">
+            通知
+          </div>
+        </div> <!-------------notification----------->
+        <% else %>
+        <div class="left_side_link">
+          <div class="left_side_icon_outer">
+            <i class="far fa-bell left_side_icon"></i>
+          </div>
+          <div class="left_side_text">
+            通知
+          </div>
+        </div> <!-------------notification----------->
+        <% end %>
+        <% end %>
+        <%= link_to rooms_path do %>
+        <div class="left_side_link">
+          <div class="left_side_icon_outer ">
+            <i class="far fa-envelope-open left_side_icon"></i>
+          </div>
+          <div class="left_side_text">
+            メッセージ
+          </div>
+        </div> <!-------------home----------->
         <% end %>
         <%= link_to destroy_user_session_path, method: :delete do %>
         <div class="left_side_link">

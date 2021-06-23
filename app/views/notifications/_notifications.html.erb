@@ -1,0 +1,39 @@
+<% notifications.each do |notification| %>
+<div class=col-md-8>
+    <%=link_to user_path(notification.visitor) do %>
+      <%= attachment_image_tag notification.visitor, :image, fallback: "no_image.jpeg", size: "20x20", class: "icon_mini" %>
+        <%= notification.visitor.name %>
+    <% end %>
+    <%= 'さんが' %>
+
+    <% case notification.action %>
+      <% when 'follow' then %>
+        <%= "あなたをフォローしました。" %>
+      <% when 'like' then %>
+        <%= link_to 'あなたの投稿', notification.post_ramen, style: "font-weight: bold;" %>
+        <%= "にいいねしました。" %>
+      <% when 'comment' then %>
+        <% if notification.post_comment.user_id == notification.visited.id %>
+          <%= link_to "あなたの投稿", notification.post_ramen, style: "font-weight: bold;" %>
+          <%= "にコメントしました。" %>
+        <% else %>
+          <%= link_to post_ramen_path(notification.post_ramen) do %>
+            <%= attachment_image_tag notification.post_ramen.user, :image, fallback: "no_image.jpeg", size: "20x20", class: "icon_mini" %>
+              <%= notification.post_ramen.user.name + 'さんの投稿' %>
+          <% end %>
+        <%= "にコメントしました。" %>
+        <% end %>
+    <% end %>
+  <div class= col-md-8>
+    <div class=text-muted.mb-0>
+      <%= PostComment.find_by(id: notification.post_comment_id)&.content %>
+    </div>
+  </div>
+  <div class= col-md-8>
+    <div class="small text-muted text-right">
+    <%= time_ago_in_words(notification.created_at).upcase + "前" %>
+    </div>
+  </div>
+</div>
+<hr>
+<% end %>

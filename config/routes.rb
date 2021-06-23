@@ -66,8 +66,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show,:edit,:update]
   resources :messages, only: [:create]
-  resources :rooms, only: [:create]
+  resources :rooms, only: [:create, :index]
   get 'rooms/show/:room_id', to: 'rooms#show', as: :room_show
+  resources :notifications, only: [:index]
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

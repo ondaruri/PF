@@ -1,6 +1,15 @@
 class RoomsController < ApplicationController
   def index
     @rooms = current_user.rooms.includes(:messages).order("messages.created_at desc")
+    # ログインユーザーが属しているルームのIDを全て抽出して配列化
+    current_entries = current_user.entries
+    my_room_ids = []
+    current_entries.each do |entry|
+      my_room_ids << entry.room.id
+    end
+    # さらにuser_idがログインユーザーでは無いレコードを抽出
+    @another_entries = Entry.where(room_id: my_room_ids).where.not(user_id: current_user.id)
+
   end
 
   def create
@@ -14,13 +23,15 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:room_id])
-    if Entry.where(user_id: current_user.id,room_id: @room.id).present?
-    @messages = @room.messages.includes(:user).order("created_at desc")
+    # if Entry.where(user_id: current_user.id,room_id: @room.id).present?
+    @messages = @room.messages.order("created_at desc")
     @message = Message.new
     @entries = @room.entries
-    else
-      redirect_to homes_index_path
-    end
-
+    # else
+    #   redirect_to homes_index_path
+    # end
   end
+
+
+
 end
