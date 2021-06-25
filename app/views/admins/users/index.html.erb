@@ -27,7 +27,7 @@
             <th></th>
             <th>User Name</th>
             <th>Introduction</th>
-            <th></th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -47,11 +47,11 @@
               <%= user.introduction %>
             </td>
             <td>
-              <!--<%# unless current_user == follower %>-->
-              <!--<div class="follow_button-<%#= follower.id %>">-->
-              <!-- <%#= render 'relationships/follow_button', user: follower %>-->
-              <!--</div>-->
-              <!--<%# end %>-->
+              <% if user.is_active == true %>
+               <p>入会中</p>
+              <% else %>
+               <p>退会済み</p>
+              <% end %>
             </td>
             <!--<td>-->
             <!--  <%# unless current_user == follower %>-->

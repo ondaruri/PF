@@ -10,6 +10,10 @@ class RoomsController < ApplicationController
     # さらにuser_idがログインユーザーでは無いレコードを抽出
     @another_entries = Entry.where(room_id: my_room_ids).where.not(user_id: current_user.id)
 
+    @notifications = current_user.passive_notifications
+    @notifications.where(checked: false).each do |notification|
+      notification.update_attributes(checked: true)
+    end
   end
 
   def create
@@ -17,8 +21,6 @@ class RoomsController < ApplicationController
     @join_current_user = Entry.create(room_id: @room.id, user_id: current_user.id)
     @join_user = Entry.create(params.require(:entry).permit(:user_id, :room_id).merge(room_id: @room.id))
     redirect_to room_show_path(@room.id)
-
-
   end
 
   def show
@@ -27,11 +29,10 @@ class RoomsController < ApplicationController
     @messages = @room.messages.order("created_at desc")
     @message = Message.new
     @entries = @room.entries
+
     # else
     #   redirect_to homes_index_path
     # end
   end
-
-
 
 end

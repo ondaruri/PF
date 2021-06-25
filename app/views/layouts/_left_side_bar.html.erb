@@ -54,6 +54,16 @@
         <% end %>
         <% end %>
         <%= link_to rooms_path do %>
+        <% if unchecked_notifications.any? %>
+        <div class="left_side_link">
+          <div class="left_side_icon_outer ">
+            <i class="far fa-envelope-open left_side_icon" style="color:tomato"></i>
+          </div>
+          <div class="left_side_text">
+            メッセージ
+          </div>
+        </div>
+        <% else %>
         <div class="left_side_link">
           <div class="left_side_icon_outer ">
             <i class="far fa-envelope-open left_side_icon"></i>
@@ -62,6 +72,7 @@
             メッセージ
           </div>
         </div> <!-------------home----------->
+        <% end %>
         <% end %>
         <%= link_to destroy_user_session_path, method: :delete do %>
         <div class="left_side_link">

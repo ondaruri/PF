@@ -70,6 +70,11 @@ Rails.application.routes.draw do
   get 'rooms/show/:room_id', to: 'rooms#show', as: :room_show
   resources :notifications, only: [:index]
 
+  #退会確認
+  get '/users/:user_id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+  # 論理削除用のルーティング
+  patch '/users/:user_id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

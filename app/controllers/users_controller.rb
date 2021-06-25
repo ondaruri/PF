@@ -51,10 +51,22 @@ before_action :baria_user, only: [:edit, :update]
     @current_user = current_user
   end
 
+  def unsubscribe
+    @user = User.find(params[:user_id])
+  end
+
+  def withdrawal
+    @user = User.find(current_user.id)
+    @user.update(is_active: false)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
+
 private
 
   def user_params
-    params.require(:user).permit(:name, :image, :introduction)
+    params.require(:user).permit(:name, :image, :introduction, :is_active)
   end
 
   def baria_user
